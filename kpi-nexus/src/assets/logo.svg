@@ -1,0 +1,109 @@
+﻿<svg viewBox="0 0 520 130" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1E5FFF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#050B18" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="facetTop" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#7DF9FF"/>
+      <stop offset="55%" stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#1E5FFF"/>
+    </linearGradient>
+    <linearGradient id="facetRight" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#1E5FFF"/>
+      <stop offset="100%" stop-color="#0A2E7C"/>
+    </linearGradient>
+    <linearGradient id="facetBottom" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#0A2E7C"/>
+      <stop offset="100%" stop-color="#050B18"/>
+    </linearGradient>
+    <linearGradient id="facetLeft" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#0A2E7C"/>
+      <stop offset="100%" stop-color="#1E5FFF"/>
+    </linearGradient>
+    <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7DF9FF"/>
+      <stop offset="100%" stop-color="#1E5FFF"/>
+    </linearGradient>
+    <linearGradient id="wordmarkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E0F4FF"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="neonGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="0.4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- ICON: centered vertically, scaled ~1.4x from original 200px icon (now ~57px wide) -->
+  <!-- Icon group: 57x57, positioned at x=8, vertically centered in 130px = y=36.5 -->
+  <g transform="translate(8, 36.5) scale(0.285)">
+    <circle cx="100" cy="100" r="85" fill="url(#bgGlow)"/>
+    <g stroke="#00D4FF" stroke-width="1" stroke-opacity="0.55" stroke-linecap="round" filter="url(#neonGlow)">
+      <line x1="100" y1="100" x2="166" y2="34"/>
+      <line x1="100" y1="100" x2="166" y2="166"/>
+      <line x1="100" y1="100" x2="34" y2="166"/>
+      <line x1="100" y1="100" x2="34" y2="34"/>
+    </g>
+    <g fill="#7DF9FF" filter="url(#neonGlow)">
+      <circle cx="133" cy="67" r="1.5"/>
+      <circle cx="133" cy="133" r="1.5"/>
+      <circle cx="67" cy="133" r="1.5"/>
+      <circle cx="67" cy="67" r="1.5"/>
+    </g>
+    <g filter="url(#softGlow)">
+      <polygon points="166,24 178,34 166,44 154,34" fill="url(#nodeGrad)"/>
+      <polygon points="166,156 178,166 166,176 154,166" fill="url(#nodeGrad)"/>
+      <polygon points="34,156 46,166 34,176 22,166" fill="url(#nodeGrad)"/>
+      <polygon points="34,24 46,34 34,44 22,34" fill="url(#nodeGrad)"/>
+    </g>
+    <g filter="url(#softGlow)">
+      <polygon points="100,52 148,100 100,100" fill="url(#facetTop)"/>
+      <polygon points="148,100 100,148 100,100" fill="url(#facetRight)"/>
+      <polygon points="100,148 52,100 100,100" fill="url(#facetBottom)"/>
+      <polygon points="52,100 100,52 100,100" fill="url(#facetLeft)"/>
+    </g>
+    <polygon points="100,52 148,100 100,148 52,100" fill="none" stroke="#7DF9FF" stroke-width="1.2" stroke-opacity="0.7" stroke-linejoin="round"/>
+    <line x1="100" y1="52" x2="100" y2="100" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.6"/>
+    <line x1="100" y1="52" x2="148" y2="100" stroke="#FFFFFF" stroke-width="0.8" stroke-opacity="0.4"/>
+    <circle cx="100" cy="100" r="3.5" fill="#FFFFFF" filter="url(#neonGlow)"/>
+    <circle cx="100" cy="100" r="6" fill="none" stroke="#7DF9FF" stroke-width="0.8" stroke-opacity="0.7"/>
+  </g>
+
+  <!-- Divider -->
+  <line x1="76" y1="18" x2="76" y2="112" stroke="#1E5FFF" stroke-width="0.6" stroke-opacity="0.4"/>
+
+  <!-- WORDMARK block: starts at x=86 -->
+  <!-- KPI.NEXUS title: font-size 36 (balanced), vertically centered at ~58 -->
+  <text x="86" y="58"
+    font-family="'Inter','Helvetica Neue','Segoe UI',Arial,sans-serif"
+    font-size="36" font-weight="700"
+    fill="url(#wordmarkGrad)"
+    letter-spacing="1.5"
+    filter="url(#textGlow)">KPI</text>
+
+  <!-- Accent dot between KPI and NEXUS -->
+  <circle cx="158" cy="48" r="2.8" fill="#7DF9FF" filter="url(#neonGlow)"/>
+
+  <text x="166" y="58"
+    font-family="'Inter','Helvetica Neue','Segoe UI',Arial,sans-serif"
+    font-size="36" font-weight="300"
+    fill="#00D4FF"
+    letter-spacing="2"
+    filter="url(#textGlow)">NEXUS</text>
+
+  <!-- Subtitle: font-size 10.5 (~40% larger than original 7.5), font-weight 500 -->
+  <text x="87" y="80"
+    font-family="'Inter','Helvetica Neue','Segoe UI',Arial,sans-serif"
+    font-size="10.5" font-weight="500"
+    fill="#93C5E8"
+    letter-spacing="3.5">EXECUTIVE  INTELLIGENCE  AGENT</text>
+</svg>

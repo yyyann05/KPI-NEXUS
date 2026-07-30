@@ -1,0 +1,15 @@
+export const ROUTES = {
+  HOME: '/',
+  FINANCIAL: '/domain/financial',
+  WORKFORCE: '/domain/workforce',
+  CUSTOMER: '/domain/customer-experience',
+  PROJECT: '/domain/project',
+  FORECAST: '/forecast',
+  FORECAST_KPI: '/forecast/:domain/:kpi',
+  ANOMALIES: '/anomalies',
+  ANOMALIES_DOMAIN: '/anomalies/:domain',
+  CROSS_DOMAIN: '/cross-domain',
+  AI_RECOMMENDATIONS: '/ai-recommendations',
+  REPORTS: '/reports',
+  AI_CHATBOT: '/ai-chatbot',
+} as const;
