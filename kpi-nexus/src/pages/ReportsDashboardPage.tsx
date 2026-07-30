@@ -61,6 +61,7 @@ import {
   SCHEDULED_REPORTS,
   type ReportType,
   type ScheduledReport,
+  type RecentReport,
 } from '../data/reportData';
 
 // ── constants ─────────────────────────────────────────────────────────────────
@@ -719,6 +720,7 @@ const ProjectTab = () => {
 const RecentReportsSection = () => {
   const [filter, setFilter] = useState<ReportType | 'all'>('all');
   const [sortAsc, setSortAsc] = useState(false);
+  const [viewingReport, setViewingReport] = useState<RecentReport | null>(null);
 
   const filtered = RECENT_REPORTS
     .filter(r => filter === 'all' || r.type === filter)
@@ -734,6 +736,8 @@ const RecentReportsSection = () => {
   };
 
   return (
+    <>
+    <ViewReportModal report={viewingReport} onClose={() => setViewingReport(null)} />
     <div className="bg-white/5 rounded-xl border border-white/10 overflow-hidden">
       {/* Toolbar */}
       <div className="flex flex-wrap gap-3 items-center justify-between px-5 py-4 border-b border-white/10">
@@ -816,10 +820,18 @@ const RecentReportsSection = () => {
                 </td>
                 <td className="px-4 py-3 text-center">
                   <div className="flex justify-center gap-2">
-                    <button className="p-1.5 rounded-lg bg-white/5 hover:bg-indigo-500/20 text-slate-400 hover:text-indigo-300 transition-colors" title="View">
+                    <button
+                      onClick={() => setViewingReport(r)}
+                      className="p-1.5 rounded-lg bg-white/5 hover:bg-indigo-500/20 text-slate-400 hover:text-indigo-300 transition-colors"
+                      title="View"
+                    >
                       <Eye className="w-3.5 h-3.5" />
                     </button>
-                    <button className="p-1.5 rounded-lg bg-white/5 hover:bg-emerald-500/20 text-slate-400 hover:text-emerald-300 transition-colors" title="Download">
+                    <button
+                      onClick={() => r.format === 'PDF' ? exportTabPDF(r.type) : exportTabCSV(r.type)}
+                      className="p-1.5 rounded-lg bg-white/5 hover:bg-emerald-500/20 text-slate-400 hover:text-emerald-300 transition-colors"
+                      title="Download"
+                    >
                       <Download className="w-3.5 h-3.5" />
                     </button>
                   </div>
@@ -833,6 +845,7 @@ const RecentReportsSection = () => {
         Showing {filtered.length} of {RECENT_REPORTS.length} reports
       </div>
     </div>
+    </>
   );
 };
 
@@ -997,26 +1010,312 @@ const ScheduleSection = () => {
   );
 };
 
-// ── Export Modal (simulated) ──────────────────────────────────────────────────
+// ── Export helpers ────────────────────────────────────────────────────────────
+
+const downloadCSV = (filename: string, rows: string[][], headers: string[]) => {
+  const escape = (v: string | number) => {
+    const s = String(v);
+    return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  const lines = [headers.map(escape).join(','), ...rows.map(r => r.map(escape).join(','))];
+  // \uFEFF BOM ensures Excel opens UTF-8 correctly
+  const blob = new Blob(['\uFEFF' + lines.join('\r\n')], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
+const exportTabCSV = (tab: ReportType) => {
+  if (tab === 'financial') {
+    downloadCSV(
+      'financial-report.csv',
+      FINANCIAL_QUARTERLY.map(r => [
+        r.period, String(r.revenue), String(r.cashFlow), String(r.netIncome),
+        String(r.expenditure), (r.profitMargin * 100).toFixed(1) + '%',
+        r.debtToEquity.toFixed(2), String(r.anomalyCount),
+      ]),
+      ['Period', 'Revenue', 'Cash Flow', 'Net Income', 'Expenditure', 'Profit Margin', 'D/E Ratio', 'Anomalies'],
+    );
+  } else if (tab === 'workforce') {
+    downloadCSV(
+      'workforce-report.csv',
+      WORKFORCE_QUARTERLY.map(r => [
+        r.period, r.attendance.toFixed(1) + '%', r.productivity.toFixed(1),
+        r.engagement.toFixed(1), r.trainingHours.toFixed(1), r.overtimeHours.toFixed(1),
+        r.turnoverRate.toFixed(2) + '%', String(r.anomalyCount),
+      ]),
+      ['Period', 'Attendance %', 'Productivity', 'Engagement', 'Training h', 'Overtime h', 'Turnover %', 'Anomalies'],
+    );
+  } else if (tab === 'customer') {
+    downloadCSV(
+      'customer-experience-report.csv',
+      CX_QUARTERLY.map(r => [
+        r.period, r.csat.toFixed(3), r.nps.toFixed(1), r.responseTime.toFixed(1) + ' min',
+        String(r.supportTickets), (r.churnRate * 100).toFixed(1) + '%', String(r.anomalyCount),
+      ]),
+      ['Period', 'CSAT', 'NPS', 'Response Time', 'Support Tickets', 'Churn Rate', 'Anomalies'],
+    );
+  } else if (tab === 'project') {
+    downloadCSV(
+      'project-report.csv',
+      PROJECT_QUARTERLY.map(r => [
+        r.period, r.completionRate.toFixed(1) + '%',
+        (r.budgetVariancePct > 0 ? '+' : '') + r.budgetVariancePct.toFixed(1) + '%',
+        (r.delayedTaskRate * 100).toFixed(1) + '%',
+        '$' + (r.totalBudgetSpent / 1000).toFixed(0) + 'K', String(r.anomalyCount),
+      ]),
+      ['Period', 'Completion %', 'Budget Variance %', 'Delayed Task %', 'Budget Spent', 'Anomalies'],
+    );
+  } else {
+    // executive — export KPI summary
+    downloadCSV(
+      'executive-summary.csv',
+      EXECUTIVE_SUMMARY.kpis.map(k => [k.label, k.value, k.change, k.sub]),
+      ['KPI', 'Value', 'Change', 'Note'],
+    );
+  }
+};
+
+const exportTabPDF = (tab: ReportType) => {
+  const label =
+    tab === 'executive' ? 'Executive Summary Report' :
+    tab === 'financial' ? 'Financial Performance Report' :
+    tab === 'workforce' ? 'Workforce Analytics Report' :
+    tab === 'customer'  ? 'Customer Experience Report' :
+    'Project Portfolio Report';
+
+  const getRows = (): { headers: string[]; rows: (string | number)[][] } => {
+    if (tab === 'financial') return {
+      headers: ['Period', 'Revenue', 'Cash Flow', 'Net Income', 'Expenditure', 'Profit Margin', 'D/E', 'Anomalies'],
+      rows: FINANCIAL_QUARTERLY.map(r => [
+        r.period, `$${(r.revenue/1000).toFixed(1)}K`, `$${(r.cashFlow/1000).toFixed(1)}K`,
+        `$${(r.netIncome/1000).toFixed(1)}K`, `$${(r.expenditure/1000).toFixed(1)}K`,
+        (r.profitMargin * 100).toFixed(1) + '%', r.debtToEquity.toFixed(2) + '×', r.anomalyCount,
+      ]),
+    };
+    if (tab === 'workforce') return {
+      headers: ['Period', 'Attendance', 'Productivity', 'Engagement', 'Training h', 'Overtime h', 'Turnover', 'Anomalies'],
+      rows: WORKFORCE_QUARTERLY.map(r => [
+        r.period, r.attendance.toFixed(1)+'%', r.productivity.toFixed(1), r.engagement.toFixed(1),
+        r.trainingHours.toFixed(1), r.overtimeHours.toFixed(1), r.turnoverRate.toFixed(2)+'%', r.anomalyCount,
+      ]),
+    };
+    if (tab === 'customer') return {
+      headers: ['Period', 'CSAT', 'NPS', 'Response Time', 'Tickets', 'Churn', 'Anomalies'],
+      rows: CX_QUARTERLY.map(r => [
+        r.period, r.csat.toFixed(3), r.nps.toFixed(1), r.responseTime.toFixed(1)+' min',
+        r.supportTickets, (r.churnRate*100).toFixed(1)+'%', r.anomalyCount,
+      ]),
+    };
+    if (tab === 'project') return {
+      headers: ['Period', 'Completion', 'Budget Variance', 'Delayed Tasks', 'Budget Spent', 'Anomalies'],
+      rows: PROJECT_QUARTERLY.map(r => [
+        r.period, r.completionRate.toFixed(1)+'%',
+        (r.budgetVariancePct>0?'+':'')+r.budgetVariancePct.toFixed(1)+'%',
+        (r.delayedTaskRate*100).toFixed(1)+'%',
+        '$'+(r.totalBudgetSpent/1000).toFixed(0)+'K', r.anomalyCount,
+      ]),
+    };
+    return {
+      headers: ['KPI', 'Value', 'Change', 'Period'],
+      rows: EXECUTIVE_SUMMARY.kpis.map(k => [k.label, k.value, k.change, k.sub]),
+    };
+  };
+
+  const { headers, rows } = getRows();
+  const thCells = headers.map(h => `<th style="padding:6px 10px;text-align:left;background:#1e293b;color:#94a3b8;font-size:11px;text-transform:uppercase">${h}</th>`).join('');
+  const trRows = rows.map((r, i) =>
+    `<tr style="background:${i%2===0?'#0f172a':'#1e293b'}">` +
+    r.map(c => `<td style="padding:6px 10px;color:#e2e8f0;font-size:12px;border-bottom:1px solid #334155">${c}</td>`).join('') +
+    '</tr>'
+  ).join('');
+
+  const html = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>${label}</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, Helvetica, sans-serif; background: #fff; color: #1e293b; padding: 40px; }
+    h1 { font-size: 20px; font-weight: 700; color: #1e293b; margin-bottom: 6px; }
+    p.sub { color: #64748b; font-size: 12px; margin-bottom: 24px; }
+    table { border-collapse: collapse; width: 100%; font-size: 12px; }
+    thead tr { background: #1e293b; }
+    thead th { padding: 8px 12px; text-align: left; color: #94a3b8; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+    tbody tr:nth-child(even) { background: #f8fafc; }
+    tbody tr:nth-child(odd)  { background: #ffffff; }
+    tbody td { padding: 7px 12px; color: #334155; border-bottom: 1px solid #e2e8f0; }
+    p.footer { margin-top: 20px; font-size: 10px; color: #94a3b8; }
+    @media print {
+      body { padding: 20px; }
+      thead tr { background: #1e293b !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      tbody tr:nth-child(even) { background: #f8fafc !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <h1>${label}</h1>
+  <p class="sub">Generated: ${new Date().toLocaleString()} &nbsp;&middot;&nbsp; KPI Nexus Dashboard</p>
+  <table>
+    <thead><tr>${thCells}</tr></thead>
+    <tbody>${trRows}</tbody>
+  </table>
+  <p class="footer">KPI Nexus &middot; Sourced from unified dataset &middot; Jan 2024 &ndash; Jul 2026</p>
+  <script>window.onload = function(){ window.print(); }<\/script>
+</body>
+</html>`;
+
+  // Use Blob URL + anchor click — avoids popup blocker entirely
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href   = url;
+  a.target = '_blank';
+  a.rel    = 'noopener noreferrer';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+};
+
+// ── View Report Modal ─────────────────────────────────────────────────────────
+
+const ViewReportModal = ({
+  report,
+  onClose,
+}: {
+  report: RecentReport | null;
+  onClose: () => void;
+}) => {
+  if (!report) return null;
+
+  const typeInsights: Record<ReportType, string[]> = {
+    executive:  EXECUTIVE_SUMMARY.highlights,
+    financial:  FINANCIAL_INSIGHTS,
+    workforce:  WORKFORCE_INSIGHTS,
+    customer:   CX_INSIGHTS,
+    project:    PROJECT_INSIGHTS,
+  };
+
+  const typeKpis: Record<ReportType, typeof FINANCIAL_KPI_CARDS> = {
+    executive:  EXECUTIVE_SUMMARY.kpis,
+    financial:  FINANCIAL_KPI_CARDS,
+    workforce:  WORKFORCE_KPI_CARDS,
+    customer:   CX_KPI_CARDS,
+    project:    PROJECT_KPI_CARDS,
+  };
+
+  const insights = typeInsights[report.type];
+  const kpis = typeKpis[report.type];
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+      <div className="bg-slate-900 border border-white/15 rounded-2xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl">
+        {/* Header */}
+        <div className="flex items-start justify-between px-6 py-5 border-b border-white/10">
+          <div>
+            <h2 className="text-white font-semibold text-base leading-tight">{report.name}</h2>
+            <div className="flex flex-wrap gap-3 mt-2 text-xs text-slate-400">
+              <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{fmtDateTime(report.generatedAt)}</span>
+              <span className="flex items-center gap-1"><Users className="w-3 h-3" />{report.generatedBy}</span>
+              <span className="flex items-center gap-1"><FileText className="w-3 h-3" />{report.format}{report.pages > 0 ? ` · ${report.pages} pages` : ''} · {report.size}</span>
+            </div>
+          </div>
+          <button onClick={onClose} className="ml-4 p-1.5 rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors text-lg leading-none">✕</button>
+        </div>
+
+        {/* Body */}
+        <div className="overflow-y-auto flex-1 px-6 py-5 space-y-5">
+          {/* Status badge */}
+          <div className="flex items-center gap-2">
+            <CheckCircle className="w-4 h-4 text-emerald-400" />
+            <span className="text-sm text-emerald-400 font-medium">Report Ready</span>
+            <span
+              className="ml-2 px-2 py-0.5 rounded-full text-xs font-semibold"
+              style={{ background: TYPE_COLORS[report.type] + '22', color: TYPE_COLORS[report.type], border: `1px solid ${TYPE_COLORS[report.type]}44` }}
+            >
+              {TYPE_LABELS[report.type]}
+            </span>
+          </div>
+
+          {/* KPI Summary */}
+          <div>
+            <p className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-3">Key Metrics</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+              {kpis.slice(0, 6).map((k, i) => (
+                <div key={i} className="bg-white/5 rounded-xl border border-white/10 p-3">
+                  <p className="text-xs text-slate-400 mb-0.5">{k.label}</p>
+                  <p className="text-base font-bold text-white">{k.value}</p>
+                  <div className="flex items-center gap-1 mt-0.5">
+                    {dirIcon(k.changeDir)}
+                    <span className={`text-xs ${dirClass(k.changeDir)}`}>{k.change}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Insights */}
+          <div>
+            <p className="text-xs font-semibold text-white/60 uppercase tracking-wider mb-3">Key Insights</p>
+            <ul className="space-y-2">
+              {insights.map((s, i) => (
+                <li key={i} className="flex gap-2 text-sm text-slate-300">
+                  <span className="text-indigo-400 mt-0.5 shrink-0">•</span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="px-6 py-4 border-t border-white/10 flex gap-2 justify-end">
+          <button
+            onClick={() => exportTabCSV(report.type)}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-700/80 hover:bg-emerald-600 text-white text-sm font-semibold transition-colors"
+          >
+            <Download className="w-4 h-4" /> Export CSV
+          </button>
+          <button
+            onClick={() => exportTabPDF(report.type)}
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-red-600/90 hover:bg-red-500 text-white text-sm font-semibold transition-colors"
+          >
+            <FileText className="w-4 h-4" /> Print / PDF
+          </button>
+          <button onClick={onClose} className="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 text-sm font-semibold transition-colors">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ── Export Modal ──────────────────────────────────────────────────────────────
 
 const ExportModal = ({
   open,
   onClose,
   activeTab,
+  fmt,
 }: {
   open: boolean;
   onClose: () => void;
   activeTab: ReportType;
+  fmt: 'PDF' | 'Excel';
 }) => {
   const [exporting, setExporting] = useState(false);
   const [done, setDone] = useState(false);
-  const [fmt, setFmt] = useState<'PDF' | 'Excel'>('PDF');
+  const [selectedFmt, setSelectedFmt] = useState<'PDF' | 'Excel'>(fmt);
 
-  const start = () => {
-    setExporting(true);
-    setTimeout(() => { setExporting(false); setDone(true); }, 1800);
-  };
-
+  React.useEffect(() => { setSelectedFmt(fmt); }, [fmt]);
   React.useEffect(() => { if (!open) { setDone(false); setExporting(false); } }, [open]);
 
   if (!open) return null;
@@ -1028,6 +1327,18 @@ const ExportModal = ({
     activeTab === 'customer'  ? 'Customer Experience Report' :
     'Project Portfolio Report';
 
+  const doExport = () => {
+    setExporting(true);
+    // Execute export synchronously (inside user gesture) to avoid popup blocker
+    if (selectedFmt === 'Excel') {
+      exportTabCSV(activeTab);
+    } else {
+      exportTabPDF(activeTab);
+    }
+    setExporting(false);
+    setDone(true);
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
       <div className="bg-slate-900 border border-white/15 rounded-2xl p-6 w-full max-w-sm shadow-2xl">
@@ -1037,7 +1348,7 @@ const ExportModal = ({
               <CheckCircle className="w-12 h-12 text-emerald-400" />
               <p className="text-white font-semibold text-lg">Export Complete</p>
               <p className="text-slate-400 text-sm text-center">
-                {reportLabel} has been exported as {fmt}.
+                {reportLabel} has been exported as {selectedFmt === 'Excel' ? 'CSV' : 'PDF'}.
               </p>
             </div>
             <button
@@ -1056,29 +1367,35 @@ const ExportModal = ({
               {(['PDF', 'Excel'] as const).map(f => (
                 <button
                   key={f}
-                  onClick={() => setFmt(f)}
+                  onClick={() => setSelectedFmt(f)}
                   className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-sm font-semibold transition-colors ${
-                    fmt === f
+                    selectedFmt === f
                       ? 'border-indigo-500 bg-indigo-600/30 text-indigo-300'
                       : 'border-white/10 bg-white/5 text-slate-400 hover:bg-white/10'
                   }`}
                 >
                   {f === 'PDF' ? <FileText className="w-4 h-4" /> : <FileSpreadsheet className="w-4 h-4" />}
-                  {f}
+                  {f === 'Excel' ? 'CSV/Excel' : f}
                 </button>
               ))}
             </div>
 
+            <p className="text-xs text-slate-500 mb-4">
+              {selectedFmt === 'Excel'
+                ? 'Downloads a .csv file — open in Excel, Numbers, or Google Sheets.'
+                : 'Opens a print dialog — save as PDF using your browser.'}
+            </p>
+
             <div className="flex gap-2">
               <button
-                onClick={start}
+                onClick={doExport}
                 disabled={exporting}
                 className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white font-semibold text-sm transition-colors"
               >
                 {exporting ? (
                   <><RefreshCw className="w-4 h-4 animate-spin" /> Generating…</>
                 ) : (
-                  <><Download className="w-4 h-4" /> Export {fmt}</>
+                  <><Download className="w-4 h-4" /> Export {selectedFmt === 'Excel' ? 'CSV' : 'PDF'}</>
                 )}
               </button>
               <button
@@ -1118,7 +1435,7 @@ const ReportsDashboardPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6">
-      <ExportModal open={exportOpen} onClose={() => setExportOpen(false)} activeTab={activeTab} />
+      <ExportModal open={exportOpen} onClose={() => setExportOpen(false)} activeTab={activeTab} fmt={exportFmt} />
 
       {/* Page Header */}
       <div className="flex flex-wrap gap-4 items-start justify-between mb-6">

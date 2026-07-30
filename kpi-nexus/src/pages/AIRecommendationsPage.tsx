@@ -140,31 +140,146 @@ const domainBadge = (d: Domain) => (
   </span>
 );
 
+// ── Export / Share helpers ────────────────────────────────────────────────────
+
+const exportRecsCSV = (recs: AIRecommendation[]) => {
+  const headers = ['#', 'Priority', 'Driver Domain', 'Driver KPI', 'Target Domain', 'Target KPI', 'Correlation', 'p-value', 'Confidence %', 'Timing', 'Status', 'Summary', 'Recommended Action'];
+  const escape = (v: string | number) => {
+    const s = String(v);
+    return s.includes(',') || s.includes('"') || s.includes('\n') ? `"${s.replace(/"/g, '""')}"` : s;
+  };
+  const rows = recs.map((r, i) => [
+    String(i + 1).padStart(2, '0'), r.priority,
+    r.driverDomain, r.driverKpi, r.targetDomain, r.targetKpi,
+    r.correlation.toFixed(2), String(r.pValue), String(r.confidenceScore),
+    r.actionTiming, r.status, r.plainEnglishSummary, r.recommendedAction,
+  ]);
+  const csv = [headers.map(escape).join(','), ...rows.map(r => r.map(escape).join(','))].join('\r\n');
+  const blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.download = 'ai-recommendations.csv';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+};
+
+const exportRecsPDF = (recs: AIRecommendation[]) => {
+  const thCells = ['#', 'Priority', 'Domain Flow', 'Correlation', 'Confidence', 'Timing', 'Status', 'Recommended Action']
+    .map(h => `<th style="padding:7px 10px;text-align:left;background:#1e293b;color:#94a3b8;font-size:10px;text-transform:uppercase;white-space:nowrap">${h}</th>`)
+    .join('');
+
+  const priorityColor: Record<string, string> = { Critical: '#ef4444', High: '#f97316', Medium: '#eab308', Low: '#22d3ee' };
+  const timingLabel: Record<string, string>   = { immediate: 'Immediate', 'short-term': 'This Week', 'long-term': 'This Month' };
+
+  const trRows = recs.map((r, i) =>
+    `<tr style="background:${i % 2 === 0 ? '#f8fafc' : '#ffffff'}">
+      <td style="padding:6px 10px;font-size:11px;color:#475569">${String(i + 1).padStart(2, '0')}</td>
+      <td style="padding:6px 10px;font-size:11px;font-weight:700;color:${priorityColor[r.priority] ?? '#64748b'}">${r.priority}</td>
+      <td style="padding:6px 10px;font-size:11px;color:#334155;white-space:nowrap">${r.driverDomain} → ${r.targetDomain}</td>
+      <td style="padding:6px 10px;font-size:11px;color:#475569;font-family:monospace">r = ${r.correlation.toFixed(2)}</td>
+      <td style="padding:6px 10px;font-size:11px;color:#475569">${r.confidenceScore}%</td>
+      <td style="padding:6px 10px;font-size:11px;color:#475569;white-space:nowrap">${timingLabel[r.actionTiming]}</td>
+      <td style="padding:6px 10px;font-size:11px;color:#475569">${r.status}</td>
+      <td style="padding:6px 10px;font-size:11px;color:#1e293b;max-width:300px">${r.recommendedAction}</td>
+    </tr>`
+  ).join('');
+
+  const html = `<!DOCTYPE html>
+<html><head><meta charset="utf-8"/><title>AI Recommendations Report</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Arial,Helvetica,sans-serif;background:#fff;color:#1e293b;padding:36px}
+  h1{font-size:20px;font-weight:700;margin-bottom:6px}
+  p.sub{color:#64748b;font-size:12px;margin-bottom:24px}
+  table{border-collapse:collapse;width:100%;font-size:12px}
+  p.footer{margin-top:20px;font-size:10px;color:#94a3b8}
+  @media print{
+    thead tr{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    tr{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  }
+</style>
+</head><body>
+<h1>AI Recommendations Report</h1>
+<p class="sub">Generated: ${new Date().toLocaleString()} &nbsp;&middot;&nbsp; KPI Nexus &nbsp;&middot;&nbsp; ${recs.length} recommendations</p>
+<table><thead><tr>${thCells}</tr></thead><tbody>${trRows}</tbody></table>
+<p class="footer">Source: final_findings_for_dashboard.pdf &middot; KPI Nexus Dashboard</p>
+<script>window.onload=function(){window.print();}<\/script>
+</body></html>`;
+
+  const blob = new Blob([html], { type: 'text/html;charset=utf-8;' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+};
+
+const copyShareLink = (): Promise<void> => {
+  const url = window.location.href;
+  if (navigator.clipboard?.writeText) {
+    return navigator.clipboard.writeText(url);
+  }
+  // Fallback for browsers without clipboard API
+  const ta = document.createElement('textarea');
+  ta.value = url;
+  ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  return Promise.resolve();
+};
+
+// ── Share Toast ───────────────────────────────────────────────────────────────
+
+const ShareToast = ({ visible, onHide }: { visible: boolean; onHide: () => void }) => {
+  React.useEffect(() => {
+    if (visible) { const t = setTimeout(onHide, 3000); return () => clearTimeout(t); }
+  }, [visible, onHide]);
+  if (!visible) return null;
+  return (
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 px-5 py-3 rounded-xl bg-slate-800 border border-white/15 shadow-2xl">
+      <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
+      <div>
+        <p className="text-white text-sm font-semibold">Link copied to clipboard</p>
+        <p className="text-slate-400 text-xs truncate max-w-xs">{window.location.href}</p>
+      </div>
+    </div>
+  );
+};
+
 // ── Export modal ──────────────────────────────────────────────────────────────
 
-const ExportModal = ({ open, onClose }: { open: boolean; onClose: () => void }) => {
-  const [fmt, setFmt] = useState<'PDF' | 'Excel' | 'Share'>('PDF');
-  const [going, setGoing] = useState(false);
-  const [done, setDone]   = useState(false);
+const ExportModal = ({
+  open,
+  onClose,
+  recs,
+}: {
+  open: boolean;
+  onClose: () => void;
+  recs: AIRecommendation[];
+}) => {
+  const [fmt, setFmt] = useState<'PDF' | 'Excel'>('PDF');
+  const [done, setDone] = useState(false);
 
-  const start = () => { setGoing(true); setTimeout(() => { setGoing(false); setDone(true); }, 1600); };
-
-  React.useEffect(() => { if (!open) { setDone(false); setGoing(false); } }, [open]);
+  React.useEffect(() => { if (!open) setDone(false); }, [open]);
 
   if (!open) return null;
+
+  const doExport = () => {
+    if (fmt === 'Excel') exportRecsCSV(recs);
+    else exportRecsPDF(recs);
+    setDone(true);
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
       <div className="bg-slate-900 border border-white/15 rounded-2xl p-6 w-full max-w-sm shadow-2xl">
         {done ? (
           <div className="flex flex-col items-center gap-3 py-4">
             <CheckCircle2 className="w-12 h-12 text-emerald-400" />
-            <p className="text-white font-semibold text-lg">
-              {fmt === 'Share' ? 'Report Link Copied' : 'Export Complete'}
-            </p>
+            <p className="text-white font-semibold text-lg">Export Complete</p>
             <p className="text-slate-400 text-sm text-center">
-              {fmt === 'Share'
-                ? 'Shareable link has been copied to clipboard.'
-                : `AI Recommendations Report exported as ${fmt}.`}
+              AI Recommendations exported as {fmt === 'Excel' ? 'CSV' : 'PDF'}.
             </p>
             <button onClick={onClose} className="mt-2 w-full py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-colors">
               Close
@@ -172,9 +287,10 @@ const ExportModal = ({ open, onClose }: { open: boolean; onClose: () => void }) 
           </div>
         ) : (
           <>
-            <h2 className="text-white font-semibold text-base mb-4">Export / Share</h2>
-            <div className="flex gap-2 mb-5">
-              {(['PDF', 'Excel', 'Share'] as const).map(f => (
+            <h2 className="text-white font-semibold text-base mb-4">Export Recommendations</h2>
+            <p className="text-slate-400 text-xs mb-4">{recs.length} recommendation{recs.length !== 1 ? 's' : ''} will be exported</p>
+            <div className="flex gap-2 mb-4">
+              {(['PDF', 'Excel'] as const).map(f => (
                 <button
                   key={f}
                   onClick={() => setFmt(f)}
@@ -182,20 +298,22 @@ const ExportModal = ({ open, onClose }: { open: boolean; onClose: () => void }) 
                     fmt === f ? 'border-indigo-500 bg-indigo-600/30 text-indigo-300' : 'border-white/10 bg-white/5 text-slate-400 hover:bg-white/10'
                   }`}
                 >
-                  {f === 'PDF'   && <FileText className="w-3.5 h-3.5" />}
-                  {f === 'Excel' && <FileSpreadsheet className="w-3.5 h-3.5" />}
-                  {f === 'Share' && <Share2 className="w-3.5 h-3.5" />}
-                  {f}
+                  {f === 'PDF'   ? <FileText className="w-3.5 h-3.5" /> : <FileSpreadsheet className="w-3.5 h-3.5" />}
+                  {f === 'Excel' ? 'CSV / Excel' : f}
                 </button>
               ))}
             </div>
+            <p className="text-xs text-slate-500 mb-4">
+              {fmt === 'Excel'
+                ? 'Downloads a .csv file — open in Excel, Numbers, or Google Sheets.'
+                : 'Opens a print-ready page — save as PDF using your browser print dialog.'}
+            </p>
             <div className="flex gap-2">
               <button
-                onClick={start}
-                disabled={going}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white font-semibold text-sm transition-colors"
+                onClick={doExport}
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition-colors"
               >
-                {going ? <><RefreshCw className="w-4 h-4 animate-spin" /> Processing…</> : <><Download className="w-4 h-4" /> Confirm</>}
+                <Download className="w-4 h-4" /> Export {fmt === 'Excel' ? 'CSV' : 'PDF'}
               </button>
               <button onClick={onClose} className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 font-semibold text-sm transition-colors">
                 Cancel
@@ -356,6 +474,7 @@ const AIRecommendationsPage: React.FC = () => {
   const [filters, setFilters] = useState<Filters>(DEFAULT_FILTERS);
   const [showFilters, setShowFilters] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const [activeSection, setActiveSection] = useState<'cards' | 'domain' | 'timeline' | 'table'>('cards');
   const [expandedDomains, setExpandedDomains] = useState<Set<string>>(new Set(['Financial','Workforce','Customer Experience','Project']));
 
@@ -417,7 +536,8 @@ const AIRecommendationsPage: React.FC = () => {
   // ── render ────────────────────────────────────────────────────────────────
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-4 md:p-6">
-      <ExportModal open={exportOpen} onClose={() => setExportOpen(false)} />
+      <ExportModal open={exportOpen} onClose={() => setExportOpen(false)} recs={filtered} />
+      <ShareToast visible={showToast} onHide={() => setShowToast(false)} />
 
       {/* ── Page Header ── */}
       <div className="flex flex-wrap gap-4 items-start justify-between mb-6">
@@ -442,21 +562,21 @@ const AIRecommendationsPage: React.FC = () => {
             {filterActive && <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />}
           </button>
           <button
-            onClick={() => setExportOpen(true)}
+            onClick={() => exportRecsPDF(filtered)}
             className="flex items-center gap-2 px-3 py-2 rounded-xl bg-red-600/90 hover:bg-red-500 text-white text-sm font-semibold shadow transition-colors"
           >
             <FileText className="w-4 h-4" />
             Export PDF
           </button>
           <button
-            onClick={() => setExportOpen(true)}
+            onClick={() => exportRecsCSV(filtered)}
             className="flex items-center gap-2 px-3 py-2 rounded-xl bg-emerald-700/80 hover:bg-emerald-600 text-white text-sm font-semibold shadow transition-colors"
           >
             <FileSpreadsheet className="w-4 h-4" />
             Export Excel
           </button>
           <button
-            onClick={() => setExportOpen(true)}
+            onClick={() => { copyShareLink().then(() => setShowToast(true)).catch(() => setShowToast(true)); }}
             className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-sm font-semibold transition-colors"
           >
             <Share2 className="w-4 h-4" />
@@ -603,11 +723,19 @@ const AIRecommendationsPage: React.FC = () => {
               <p className="text-xs text-slate-400 font-medium mb-2">{card.metric}</p>
               <p className="text-xs text-slate-500 leading-relaxed">{card.detail}</p>
               <div className="flex flex-wrap gap-1 mt-3">
-                {card.relatedRecs.map(id => (
-                  <span key={id} className="px-1.5 py-0.5 rounded text-xs font-mono bg-white/5 text-slate-500 border border-white/10">
-                    {id.replace('rec-', '#')}
-                  </span>
-                ))}
+                {card.relatedRecs.map(id => {
+                  const rec = AI_RECOMMENDATIONS.find(r => r.id === id);
+                  const label = rec ? `${rec.driverKpi.replace(/_/g,' ')} → ${rec.targetKpi.replace(/_/g,' ')}` : id;
+                  return (
+                    <span
+                      key={id}
+                      title={label}
+                      className="px-2 py-0.5 rounded text-xs bg-white/5 text-slate-400 border border-white/10 truncate max-w-[180px]"
+                    >
+                      {label}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           ))}
