@@ -214,7 +214,7 @@ const AnomalyDetectionPage: React.FC = () => {
           </p>
         </div>
         <div className="text-xs bg-gray-900 border border-gray-800 rounded-xl px-4 py-2 text-gray-400">
-          Last updated: <span className="text-white font-medium">Sep 2027</span>
+          Last updated: <span className="text-white font-medium">{new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
         </div>
       </div>
 

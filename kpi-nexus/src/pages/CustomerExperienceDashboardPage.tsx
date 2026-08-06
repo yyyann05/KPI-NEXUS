@@ -352,7 +352,7 @@ export default function CustomerExperienceDashboardPage() {
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">Customer Experience Dashboard</h1>
-            <p className="text-xs text-gray-400">Jan 2025 – Sep 2027 &bull; 33 months &bull; Last updated: Sep 2027</p>
+            <p className="text-xs text-gray-400">Jan 2025 – Sep 2027 &bull; 33 months &bull; Last updated: {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
           </div>
         </div>
         {/* Summary strip */}

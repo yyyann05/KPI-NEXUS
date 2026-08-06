@@ -31,14 +31,28 @@ const PAGE_TITLES: Record<string, string> = {
   '/ai-chatbot': 'AI Chatbot',
 };
 
+function formatLiveDate(d: Date) {
+  return d.toLocaleString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+    hour: '2-digit', minute: '2-digit',
+  });
+}
+
 export function TopBar() {
   const location = useLocation();
   const { notificationPanelOpen, toggleNotificationPanel, closeNotificationPanel } = useUIStore();
   const { dateRange, setDateRange } = useFilterStore();
   const [profileOpen, setProfileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [now, setNow] = useState(() => new Date());
   const notifRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
+
+  // Live clock — updates every minute
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(id);
+  }, []);
 
   const unreadCount = NOTIFICATIONS.filter((n) => !n.read).length;
   const pageTitle = PAGE_TITLES[location.pathname] ?? 'KPI Nexus';
@@ -64,7 +78,7 @@ export function TopBar() {
         <div>
           <h1 className="text-sm font-semibold text-text-primary leading-none">{pageTitle}</h1>
           <p className="text-[11px] text-text-muted mt-0.5">
-            {dateRange.start} — {dateRange.end} · Last updated: Jul 30, 2026
+            {dateRange.start} — {dateRange.end} · Last updated: {formatLiveDate(now)}
           </p>
         </div>
       </div>

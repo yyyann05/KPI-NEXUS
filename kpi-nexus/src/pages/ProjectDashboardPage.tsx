@@ -332,7 +332,7 @@ export default function ProjectDashboardPage() {
           </div>
           <div>
             <h1 className="text-xl font-bold text-white">Project Dashboard</h1>
-            <p className="text-xs text-gray-400">Mar 2024 – Apr 2026 &bull; 26 months &bull; Last updated: Apr 2026</p>
+            <p className="text-xs text-gray-400">Mar 2024 – Apr 2026 &bull; 26 months &bull; Last updated: {new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</p>
           </div>
           {/* Critical alert banner */}
           <div className="ml-auto flex items-center gap-2 px-3 py-1.5 bg-red-500/10 border border-red-500/30 rounded-lg">

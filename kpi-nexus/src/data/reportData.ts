@@ -60,7 +60,7 @@ export interface ExecutiveSummary {
 }
 
 export const EXECUTIVE_SUMMARY: ExecutiveSummary = {
-  reportDate: 'July 30, 2026',
+  reportDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
   period: 'Jan 2025 – Jul 2026',
   overallScore: 74,
   highlights: [

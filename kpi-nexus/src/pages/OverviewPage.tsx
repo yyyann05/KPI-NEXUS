@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   TrendingUp, AlertTriangle, Network, Sparkles,
@@ -22,10 +23,30 @@ import {
   RECENT_RECOMMENDATIONS,
 } from '../data/mockData';
 
+function getGreeting(): string {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 18) return 'Good afternoon';
+  return 'Good evening';
+}
+
+function formatFullDate(d: Date): string {
+  return d.toLocaleDateString('en-US', {
+    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+  });
+}
+
 export function OverviewPage() {
   const navigate = useNavigate();
+  const [now, setNow] = useState(() => new Date());
   const criticalAlerts = RECENT_ALERTS.filter((a) => a.severityScore >= 5);
   const pendingRecs = RECENT_RECOMMENDATIONS.filter((r) => r.status === 'pending');
+
+  // Update every minute so greeting and date stay current
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 60_000);
+    return () => clearInterval(id);
+  }, []);
 
   return (
     <div className="flex flex-col min-h-full">
@@ -35,10 +56,10 @@ export function OverviewPage() {
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold text-text-primary">
-              Good morning, Executive
+              {getGreeting()}, Executive
             </h1>
             <p className="text-sm text-text-muted mt-0.5">
-              Thursday, July 30, 2026 · Here's your KPI intelligence summary
+              {formatFullDate(now)} · Here's your KPI intelligence summary
             </p>
           </div>
           <div className="hidden md:flex items-center gap-2">
