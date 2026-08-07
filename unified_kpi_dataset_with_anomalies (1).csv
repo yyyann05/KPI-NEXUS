@@ -1,0 +1,1067 @@
+Date,Domain,KPI_Name,KPI_Value,Dimension
+2025-01-01,Customer Experience,Anomaly_Count,5.0,All Customers
+2025-02-01,Customer Experience,Anomaly_Count,8.0,All Customers
+2025-03-01,Customer Experience,Anomaly_Count,11.0,All Customers
+2025-04-01,Customer Experience,Anomaly_Count,9.0,All Customers
+2025-05-01,Customer Experience,Anomaly_Count,9.0,All Customers
+2025-06-01,Customer Experience,Anomaly_Count,6.0,All Customers
+2025-07-01,Customer Experience,Anomaly_Count,5.0,All Customers
+2025-08-01,Customer Experience,Anomaly_Count,5.0,All Customers
+2025-09-01,Customer Experience,Anomaly_Count,6.0,All Customers
+2025-10-01,Customer Experience,Anomaly_Count,4.0,All Customers
+2025-11-01,Customer Experience,Anomaly_Count,9.0,All Customers
+2025-12-01,Customer Experience,Anomaly_Count,8.0,All Customers
+2026-01-01,Customer Experience,Anomaly_Count,2.0,All Customers
+2026-02-01,Customer Experience,Anomaly_Count,6.0,All Customers
+2026-03-01,Customer Experience,Anomaly_Count,6.0,All Customers
+2026-04-01,Customer Experience,Anomaly_Count,5.0,All Customers
+2026-05-01,Customer Experience,Anomaly_Count,7.0,All Customers
+2026-06-01,Customer Experience,Anomaly_Count,3.0,All Customers
+2026-07-01,Customer Experience,Anomaly_Count,8.0,All Customers
+2026-08-01,Customer Experience,Anomaly_Count,4.0,All Customers
+2026-09-01,Customer Experience,Anomaly_Count,4.0,All Customers
+2026-10-01,Customer Experience,Anomaly_Count,2.0,All Customers
+2026-11-01,Customer Experience,Anomaly_Count,7.0,All Customers
+2026-12-01,Customer Experience,Anomaly_Count,8.0,All Customers
+2027-01-01,Customer Experience,Anomaly_Count,6.0,All Customers
+2027-02-01,Customer Experience,Anomaly_Count,2.0,All Customers
+2027-03-01,Customer Experience,Anomaly_Count,2.0,All Customers
+2027-04-01,Customer Experience,Anomaly_Count,0.0,All Customers
+2027-05-01,Customer Experience,Anomaly_Count,3.0,All Customers
+2027-06-01,Customer Experience,Anomaly_Count,3.0,All Customers
+2027-07-01,Customer Experience,Anomaly_Count,3.0,All Customers
+2027-08-01,Customer Experience,Anomaly_Count,7.0,All Customers
+2027-09-01,Customer Experience,Anomaly_Count,3.0,All Customers
+2025-01-01,Customer Experience,Anomaly_Rate,0.023,All Customers
+2025-02-01,Customer Experience,Anomaly_Rate,0.037,All Customers
+2025-03-01,Customer Experience,Anomaly_Rate,0.052,All Customers
+2025-04-01,Customer Experience,Anomaly_Rate,0.044,All Customers
+2025-05-01,Customer Experience,Anomaly_Rate,0.046,All Customers
+2025-06-01,Customer Experience,Anomaly_Rate,0.034,All Customers
+2025-07-01,Customer Experience,Anomaly_Rate,0.029,All Customers
+2025-08-01,Customer Experience,Anomaly_Rate,0.026,All Customers
+2025-09-01,Customer Experience,Anomaly_Rate,0.035,All Customers
+2025-10-01,Customer Experience,Anomaly_Rate,0.025,All Customers
+2025-11-01,Customer Experience,Anomaly_Rate,0.057,All Customers
+2025-12-01,Customer Experience,Anomaly_Rate,0.051,All Customers
+2026-01-01,Customer Experience,Anomaly_Rate,0.012,All Customers
+2026-02-01,Customer Experience,Anomaly_Rate,0.041,All Customers
+2026-03-01,Customer Experience,Anomaly_Rate,0.043,All Customers
+2026-04-01,Customer Experience,Anomaly_Rate,0.034,All Customers
+2026-05-01,Customer Experience,Anomaly_Rate,0.054,All Customers
+2026-06-01,Customer Experience,Anomaly_Rate,0.021,All Customers
+2026-07-01,Customer Experience,Anomaly_Rate,0.062,All Customers
+2026-08-01,Customer Experience,Anomaly_Rate,0.03,All Customers
+2026-09-01,Customer Experience,Anomaly_Rate,0.031,All Customers
+2026-10-01,Customer Experience,Anomaly_Rate,0.017,All Customers
+2026-11-01,Customer Experience,Anomaly_Rate,0.057,All Customers
+2026-12-01,Customer Experience,Anomaly_Rate,0.069,All Customers
+2027-01-01,Customer Experience,Anomaly_Rate,0.056,All Customers
+2027-02-01,Customer Experience,Anomaly_Rate,0.017,All Customers
+2027-03-01,Customer Experience,Anomaly_Rate,0.02,All Customers
+2027-04-01,Customer Experience,Anomaly_Rate,0.0,All Customers
+2027-05-01,Customer Experience,Anomaly_Rate,0.027,All Customers
+2027-06-01,Customer Experience,Anomaly_Rate,0.028,All Customers
+2027-07-01,Customer Experience,Anomaly_Rate,0.031,All Customers
+2027-08-01,Customer Experience,Anomaly_Rate,0.074,All Customers
+2027-09-01,Customer Experience,Anomaly_Rate,0.032,All Customers
+2025-01-01,Customer Experience,Avg_CSAT_Score,3.886,All Customers
+2025-02-01,Customer Experience,Avg_CSAT_Score,3.865,All Customers
+2025-03-01,Customer Experience,Avg_CSAT_Score,3.776,All Customers
+2025-04-01,Customer Experience,Avg_CSAT_Score,3.847,All Customers
+2025-05-01,Customer Experience,Avg_CSAT_Score,3.86,All Customers
+2025-06-01,Customer Experience,Avg_CSAT_Score,3.85,All Customers
+2025-07-01,Customer Experience,Avg_CSAT_Score,3.885,All Customers
+2025-08-01,Customer Experience,Avg_CSAT_Score,3.974,All Customers
+2025-09-01,Customer Experience,Avg_CSAT_Score,3.934,All Customers
+2025-10-01,Customer Experience,Avg_CSAT_Score,3.892,All Customers
+2025-11-01,Customer Experience,Avg_CSAT_Score,3.776,All Customers
+2025-12-01,Customer Experience,Avg_CSAT_Score,3.738,All Customers
+2026-01-01,Customer Experience,Avg_CSAT_Score,3.897,All Customers
+2026-02-01,Customer Experience,Avg_CSAT_Score,3.935,All Customers
+2026-03-01,Customer Experience,Avg_CSAT_Score,3.74,All Customers
+2026-04-01,Customer Experience,Avg_CSAT_Score,3.851,All Customers
+2026-05-01,Customer Experience,Avg_CSAT_Score,3.856,All Customers
+2026-06-01,Customer Experience,Avg_CSAT_Score,3.856,All Customers
+2026-07-01,Customer Experience,Avg_CSAT_Score,3.841,All Customers
+2026-08-01,Customer Experience,Avg_CSAT_Score,3.886,All Customers
+2026-09-01,Customer Experience,Avg_CSAT_Score,3.951,All Customers
+2026-10-01,Customer Experience,Avg_CSAT_Score,3.805,All Customers
+2026-11-01,Customer Experience,Avg_CSAT_Score,3.813,All Customers
+2026-12-01,Customer Experience,Avg_CSAT_Score,3.698,All Customers
+2027-01-01,Customer Experience,Avg_CSAT_Score,3.811,All Customers
+2027-02-01,Customer Experience,Avg_CSAT_Score,3.809,All Customers
+2027-03-01,Customer Experience,Avg_CSAT_Score,3.81,All Customers
+2027-04-01,Customer Experience,Avg_CSAT_Score,3.909,All Customers
+2027-05-01,Customer Experience,Avg_CSAT_Score,3.974,All Customers
+2027-06-01,Customer Experience,Avg_CSAT_Score,3.915,All Customers
+2027-07-01,Customer Experience,Avg_CSAT_Score,3.832,All Customers
+2027-08-01,Customer Experience,Avg_CSAT_Score,3.841,All Customers
+2027-09-01,Customer Experience,Avg_CSAT_Score,3.858,All Customers
+2025-01-01,Customer Experience,Avg_NPS_Score,60.29,All Customers
+2025-02-01,Customer Experience,Avg_NPS_Score,58.775,All Customers
+2025-03-01,Customer Experience,Avg_NPS_Score,54.316,All Customers
+2025-04-01,Customer Experience,Avg_NPS_Score,59.261,All Customers
+2025-05-01,Customer Experience,Avg_NPS_Score,58.095,All Customers
+2025-06-01,Customer Experience,Avg_NPS_Score,60.113,All Customers
+2025-07-01,Customer Experience,Avg_NPS_Score,61.786,All Customers
+2025-08-01,Customer Experience,Avg_NPS_Score,62.412,All Customers
+2025-09-01,Customer Experience,Avg_NPS_Score,61.161,All Customers
+2025-10-01,Customer Experience,Avg_NPS_Score,61.105,All Customers
+2025-11-01,Customer Experience,Avg_NPS_Score,57.782,All Customers
+2025-12-01,Customer Experience,Avg_NPS_Score,60.634,All Customers
+2026-01-01,Customer Experience,Avg_NPS_Score,63.214,All Customers
+2026-02-01,Customer Experience,Avg_NPS_Score,62.107,All Customers
+2026-03-01,Customer Experience,Avg_NPS_Score,56.036,All Customers
+2026-04-01,Customer Experience,Avg_NPS_Score,59.05,All Customers
+2026-05-01,Customer Experience,Avg_NPS_Score,60.012,All Customers
+2026-06-01,Customer Experience,Avg_NPS_Score,59.743,All Customers
+2026-07-01,Customer Experience,Avg_NPS_Score,60.088,All Customers
+2026-08-01,Customer Experience,Avg_NPS_Score,62.232,All Customers
+2026-09-01,Customer Experience,Avg_NPS_Score,62.762,All Customers
+2026-10-01,Customer Experience,Avg_NPS_Score,59.689,All Customers
+2026-11-01,Customer Experience,Avg_NPS_Score,60.039,All Customers
+2026-12-01,Customer Experience,Avg_NPS_Score,55.337,All Customers
+2027-01-01,Customer Experience,Avg_NPS_Score,57.442,All Customers
+2027-02-01,Customer Experience,Avg_NPS_Score,59.894,All Customers
+2027-03-01,Customer Experience,Avg_NPS_Score,60.6,All Customers
+2027-04-01,Customer Experience,Avg_NPS_Score,60.897,All Customers
+2027-05-01,Customer Experience,Avg_NPS_Score,64.969,All Customers
+2027-06-01,Customer Experience,Avg_NPS_Score,63.917,All Customers
+2027-07-01,Customer Experience,Avg_NPS_Score,58.915,All Customers
+2027-08-01,Customer Experience,Avg_NPS_Score,61.735,All Customers
+2027-09-01,Customer Experience,Avg_NPS_Score,63.824,All Customers
+2025-01-01,Customer Experience,Avg_Response_Time,45.775,All Customers
+2025-02-01,Customer Experience,Avg_Response_Time,51.817,All Customers
+2025-03-01,Customer Experience,Avg_Response_Time,50.813,All Customers
+2025-04-01,Customer Experience,Avg_Response_Time,50.865,All Customers
+2025-05-01,Customer Experience,Avg_Response_Time,46.961,All Customers
+2025-06-01,Customer Experience,Avg_Response_Time,50.789,All Customers
+2025-07-01,Customer Experience,Avg_Response_Time,51.783,All Customers
+2025-08-01,Customer Experience,Avg_Response_Time,48.202,All Customers
+2025-09-01,Customer Experience,Avg_Response_Time,52.093,All Customers
+2025-10-01,Customer Experience,Avg_Response_Time,48.419,All Customers
+2025-11-01,Customer Experience,Avg_Response_Time,66.47,All Customers
+2025-12-01,Customer Experience,Avg_Response_Time,61.391,All Customers
+2026-01-01,Customer Experience,Avg_Response_Time,44.925,All Customers
+2026-02-01,Customer Experience,Avg_Response_Time,50.401,All Customers
+2026-03-01,Customer Experience,Avg_Response_Time,44.797,All Customers
+2026-04-01,Customer Experience,Avg_Response_Time,42.003,All Customers
+2026-05-01,Customer Experience,Avg_Response_Time,43.361,All Customers
+2026-06-01,Customer Experience,Avg_Response_Time,44.9,All Customers
+2026-07-01,Customer Experience,Avg_Response_Time,54.849,All Customers
+2026-08-01,Customer Experience,Avg_Response_Time,45.936,All Customers
+2026-09-01,Customer Experience,Avg_Response_Time,44.932,All Customers
+2026-10-01,Customer Experience,Avg_Response_Time,43.741,All Customers
+2026-11-01,Customer Experience,Avg_Response_Time,58.889,All Customers
+2026-12-01,Customer Experience,Avg_Response_Time,58.696,All Customers
+2027-01-01,Customer Experience,Avg_Response_Time,49.806,All Customers
+2027-02-01,Customer Experience,Avg_Response_Time,40.025,All Customers
+2027-03-01,Customer Experience,Avg_Response_Time,41.138,All Customers
+2027-04-01,Customer Experience,Avg_Response_Time,38.695,All Customers
+2027-05-01,Customer Experience,Avg_Response_Time,45.442,All Customers
+2027-06-01,Customer Experience,Avg_Response_Time,39.594,All Customers
+2027-07-01,Customer Experience,Avg_Response_Time,40.91,All Customers
+2027-08-01,Customer Experience,Avg_Response_Time,54.152,All Customers
+2027-09-01,Customer Experience,Avg_Response_Time,46.222,All Customers
+2025-01-01,Customer Experience,Avg_Severity_Score,49.824,All Customers
+2025-02-01,Customer Experience,Avg_Severity_Score,50.244,All Customers
+2025-03-01,Customer Experience,Avg_Severity_Score,48.956,All Customers
+2025-04-01,Customer Experience,Avg_Severity_Score,52.384,All Customers
+2025-05-01,Customer Experience,Avg_Severity_Score,48.228,All Customers
+2025-06-01,Customer Experience,Avg_Severity_Score,44.162,All Customers
+2025-07-01,Customer Experience,Avg_Severity_Score,47.63,All Customers
+2025-08-01,Customer Experience,Avg_Severity_Score,48.013,All Customers
+2025-09-01,Customer Experience,Avg_Severity_Score,47.624,All Customers
+2025-10-01,Customer Experience,Avg_Severity_Score,46.829,All Customers
+2025-11-01,Customer Experience,Avg_Severity_Score,65.87,All Customers
+2025-12-01,Customer Experience,Avg_Severity_Score,62.668,All Customers
+2026-01-01,Customer Experience,Avg_Severity_Score,45.656,All Customers
+2026-02-01,Customer Experience,Avg_Severity_Score,51.897,All Customers
+2026-03-01,Customer Experience,Avg_Severity_Score,48.079,All Customers
+2026-04-01,Customer Experience,Avg_Severity_Score,43.514,All Customers
+2026-05-01,Customer Experience,Avg_Severity_Score,50.136,All Customers
+2026-06-01,Customer Experience,Avg_Severity_Score,47.06,All Customers
+2026-07-01,Customer Experience,Avg_Severity_Score,50.302,All Customers
+2026-08-01,Customer Experience,Avg_Severity_Score,48.027,All Customers
+2026-09-01,Customer Experience,Avg_Severity_Score,48.328,All Customers
+2026-10-01,Customer Experience,Avg_Severity_Score,45.072,All Customers
+2026-11-01,Customer Experience,Avg_Severity_Score,60.664,All Customers
+2026-12-01,Customer Experience,Avg_Severity_Score,59.339,All Customers
+2027-01-01,Customer Experience,Avg_Severity_Score,49.935,All Customers
+2027-02-01,Customer Experience,Avg_Severity_Score,47.66,All Customers
+2027-03-01,Customer Experience,Avg_Severity_Score,44.783,All Customers
+2027-04-01,Customer Experience,Avg_Severity_Score,54.526,All Customers
+2027-05-01,Customer Experience,Avg_Severity_Score,48.155,All Customers
+2027-06-01,Customer Experience,Avg_Severity_Score,48.052,All Customers
+2027-07-01,Customer Experience,Avg_Severity_Score,47.528,All Customers
+2027-08-01,Customer Experience,Avg_Severity_Score,51.781,All Customers
+2027-09-01,Customer Experience,Avg_Severity_Score,47.988,All Customers
+2025-01-01,Customer Experience,Churn_Rate,0.047,All Customers
+2025-02-01,Customer Experience,Churn_Rate,0.056,All Customers
+2025-03-01,Customer Experience,Churn_Rate,0.033,All Customers
+2025-04-01,Customer Experience,Churn_Rate,0.049,All Customers
+2025-05-01,Customer Experience,Churn_Rate,0.031,All Customers
+2025-06-01,Customer Experience,Churn_Rate,0.034,All Customers
+2025-07-01,Customer Experience,Churn_Rate,0.052,All Customers
+2025-08-01,Customer Experience,Churn_Rate,0.053,All Customers
+2025-09-01,Customer Experience,Churn_Rate,0.069,All Customers
+2025-10-01,Customer Experience,Churn_Rate,0.031,All Customers
+2025-11-01,Customer Experience,Churn_Rate,0.038,All Customers
+2025-12-01,Customer Experience,Churn_Rate,0.044,All Customers
+2026-01-01,Customer Experience,Churn_Rate,0.031,All Customers
+2026-02-01,Customer Experience,Churn_Rate,0.054,All Customers
+2026-03-01,Customer Experience,Churn_Rate,0.036,All Customers
+2026-04-01,Customer Experience,Churn_Rate,0.014,All Customers
+2026-05-01,Customer Experience,Churn_Rate,0.016,All Customers
+2026-06-01,Customer Experience,Churn_Rate,0.028,All Customers
+2026-07-01,Customer Experience,Churn_Rate,0.039,All Customers
+2026-08-01,Customer Experience,Churn_Rate,0.03,All Customers
+2026-09-01,Customer Experience,Churn_Rate,0.038,All Customers
+2026-10-01,Customer Experience,Churn_Rate,0.017,All Customers
+2026-11-01,Customer Experience,Churn_Rate,0.057,All Customers
+2026-12-01,Customer Experience,Churn_Rate,0.034,All Customers
+2027-01-01,Customer Experience,Churn_Rate,0.019,All Customers
+2027-02-01,Customer Experience,Churn_Rate,0.078,All Customers
+2027-03-01,Customer Experience,Churn_Rate,0.059,All Customers
+2027-04-01,Customer Experience,Churn_Rate,0.043,All Customers
+2027-05-01,Customer Experience,Churn_Rate,0.071,All Customers
+2027-06-01,Customer Experience,Churn_Rate,0.018,All Customers
+2027-07-01,Customer Experience,Churn_Rate,0.082,All Customers
+2027-08-01,Customer Experience,Churn_Rate,0.021,All Customers
+2027-09-01,Customer Experience,Churn_Rate,0.021,All Customers
+2025-01-01,Customer Experience,Total_Support_Tickets,698.0,All Customers
+2025-02-01,Customer Experience,Total_Support_Tickets,726.0,All Customers
+2025-03-01,Customer Experience,Total_Support_Tickets,717.0,All Customers
+2025-04-01,Customer Experience,Total_Support_Tickets,812.0,All Customers
+2025-05-01,Customer Experience,Total_Support_Tickets,694.0,All Customers
+2025-06-01,Customer Experience,Total_Support_Tickets,643.0,All Customers
+2025-07-01,Customer Experience,Total_Support_Tickets,496.0,All Customers
+2025-08-01,Customer Experience,Total_Support_Tickets,549.0,All Customers
+2025-09-01,Customer Experience,Total_Support_Tickets,546.0,All Customers
+2025-10-01,Customer Experience,Total_Support_Tickets,497.0,All Customers
+2025-11-01,Customer Experience,Total_Support_Tickets,937.0,All Customers
+2025-12-01,Customer Experience,Total_Support_Tickets,966.0,All Customers
+2026-01-01,Customer Experience,Total_Support_Tickets,462.0,All Customers
+2026-02-01,Customer Experience,Total_Support_Tickets,514.0,All Customers
+2026-03-01,Customer Experience,Total_Support_Tickets,500.0,All Customers
+2026-04-01,Customer Experience,Total_Support_Tickets,493.0,All Customers
+2026-05-01,Customer Experience,Total_Support_Tickets,486.0,All Customers
+2026-06-01,Customer Experience,Total_Support_Tickets,453.0,All Customers
+2026-07-01,Customer Experience,Total_Support_Tickets,320.0,All Customers
+2026-08-01,Customer Experience,Total_Support_Tickets,326.0,All Customers
+2026-09-01,Customer Experience,Total_Support_Tickets,431.0,All Customers
+2026-10-01,Customer Experience,Total_Support_Tickets,388.0,All Customers
+2026-11-01,Customer Experience,Total_Support_Tickets,729.0,All Customers
+2026-12-01,Customer Experience,Total_Support_Tickets,649.0,All Customers
+2027-01-01,Customer Experience,Total_Support_Tickets,323.0,All Customers
+2027-02-01,Customer Experience,Total_Support_Tickets,374.0,All Customers
+2027-03-01,Customer Experience,Total_Support_Tickets,308.0,All Customers
+2027-04-01,Customer Experience,Total_Support_Tickets,358.0,All Customers
+2027-05-01,Customer Experience,Total_Support_Tickets,329.0,All Customers
+2027-06-01,Customer Experience,Total_Support_Tickets,337.0,All Customers
+2027-07-01,Customer Experience,Total_Support_Tickets,205.0,All Customers
+2027-08-01,Customer Experience,Total_Support_Tickets,251.0,All Customers
+2027-09-01,Customer Experience,Total_Support_Tickets,329.0,All Customers
+2025-01-01,Financial,Anomaly_Count,4.0,All Accounts
+2025-02-01,Financial,Anomaly_Count,0.0,All Accounts
+2025-03-01,Financial,Anomaly_Count,0.0,All Accounts
+2025-04-01,Financial,Anomaly_Count,0.0,All Accounts
+2025-05-01,Financial,Anomaly_Count,1.0,All Accounts
+2025-06-01,Financial,Anomaly_Count,1.0,All Accounts
+2025-07-01,Financial,Anomaly_Count,0.0,All Accounts
+2025-08-01,Financial,Anomaly_Count,1.0,All Accounts
+2025-09-01,Financial,Anomaly_Count,2.0,All Accounts
+2025-10-01,Financial,Anomaly_Count,2.0,All Accounts
+2025-11-01,Financial,Anomaly_Count,0.0,All Accounts
+2025-12-01,Financial,Anomaly_Count,1.0,All Accounts
+2026-01-01,Financial,Anomaly_Count,1.0,All Accounts
+2026-02-01,Financial,Anomaly_Count,0.0,All Accounts
+2026-03-01,Financial,Anomaly_Count,0.0,All Accounts
+2026-04-01,Financial,Anomaly_Count,2.0,All Accounts
+2026-05-01,Financial,Anomaly_Count,0.0,All Accounts
+2026-06-01,Financial,Anomaly_Count,1.0,All Accounts
+2026-07-01,Financial,Anomaly_Count,2.0,All Accounts
+2026-08-01,Financial,Anomaly_Count,0.0,All Accounts
+2026-09-01,Financial,Anomaly_Count,2.0,All Accounts
+2026-10-01,Financial,Anomaly_Count,0.0,All Accounts
+2026-11-01,Financial,Anomaly_Count,2.0,All Accounts
+2026-12-01,Financial,Anomaly_Count,2.0,All Accounts
+2027-01-01,Financial,Anomaly_Count,1.0,All Accounts
+2027-02-01,Financial,Anomaly_Count,1.0,All Accounts
+2027-03-01,Financial,Anomaly_Count,1.0,All Accounts
+2027-04-01,Financial,Anomaly_Count,1.0,All Accounts
+2027-05-01,Financial,Anomaly_Count,1.0,All Accounts
+2027-06-01,Financial,Anomaly_Count,1.0,All Accounts
+2027-07-01,Financial,Anomaly_Count,3.0,All Accounts
+2027-08-01,Financial,Anomaly_Count,0.0,All Accounts
+2027-09-01,Financial,Anomaly_Count,2.0,All Accounts
+2025-01-01,Financial,Anomaly_Rate,0.129,All Accounts
+2025-02-01,Financial,Anomaly_Rate,0.0,All Accounts
+2025-03-01,Financial,Anomaly_Rate,0.0,All Accounts
+2025-04-01,Financial,Anomaly_Rate,0.0,All Accounts
+2025-05-01,Financial,Anomaly_Rate,0.032,All Accounts
+2025-06-01,Financial,Anomaly_Rate,0.033,All Accounts
+2025-07-01,Financial,Anomaly_Rate,0.0,All Accounts
+2025-08-01,Financial,Anomaly_Rate,0.032,All Accounts
+2025-09-01,Financial,Anomaly_Rate,0.067,All Accounts
+2025-10-01,Financial,Anomaly_Rate,0.065,All Accounts
+2025-11-01,Financial,Anomaly_Rate,0.0,All Accounts
+2025-12-01,Financial,Anomaly_Rate,0.032,All Accounts
+2026-01-01,Financial,Anomaly_Rate,0.032,All Accounts
+2026-02-01,Financial,Anomaly_Rate,0.0,All Accounts
+2026-03-01,Financial,Anomaly_Rate,0.0,All Accounts
+2026-04-01,Financial,Anomaly_Rate,0.067,All Accounts
+2026-05-01,Financial,Anomaly_Rate,0.0,All Accounts
+2026-06-01,Financial,Anomaly_Rate,0.033,All Accounts
+2026-07-01,Financial,Anomaly_Rate,0.065,All Accounts
+2026-08-01,Financial,Anomaly_Rate,0.0,All Accounts
+2026-09-01,Financial,Anomaly_Rate,0.067,All Accounts
+2026-10-01,Financial,Anomaly_Rate,0.0,All Accounts
+2026-11-01,Financial,Anomaly_Rate,0.067,All Accounts
+2026-12-01,Financial,Anomaly_Rate,0.065,All Accounts
+2027-01-01,Financial,Anomaly_Rate,0.032,All Accounts
+2027-02-01,Financial,Anomaly_Rate,0.036,All Accounts
+2027-03-01,Financial,Anomaly_Rate,0.032,All Accounts
+2027-04-01,Financial,Anomaly_Rate,0.033,All Accounts
+2027-05-01,Financial,Anomaly_Rate,0.032,All Accounts
+2027-06-01,Financial,Anomaly_Rate,0.033,All Accounts
+2027-07-01,Financial,Anomaly_Rate,0.097,All Accounts
+2027-08-01,Financial,Anomaly_Rate,0.0,All Accounts
+2027-09-01,Financial,Anomaly_Rate,0.074,All Accounts
+2025-01-01,Financial,Avg_Debt_to_Equity,1.825,All Accounts
+2025-02-01,Financial,Avg_Debt_to_Equity,1.831,All Accounts
+2025-03-01,Financial,Avg_Debt_to_Equity,1.672,All Accounts
+2025-04-01,Financial,Avg_Debt_to_Equity,1.855,All Accounts
+2025-05-01,Financial,Avg_Debt_to_Equity,1.95,All Accounts
+2025-06-01,Financial,Avg_Debt_to_Equity,1.788,All Accounts
+2025-07-01,Financial,Avg_Debt_to_Equity,1.603,All Accounts
+2025-08-01,Financial,Avg_Debt_to_Equity,1.866,All Accounts
+2025-09-01,Financial,Avg_Debt_to_Equity,1.813,All Accounts
+2025-10-01,Financial,Avg_Debt_to_Equity,1.787,All Accounts
+2025-11-01,Financial,Avg_Debt_to_Equity,1.781,All Accounts
+2025-12-01,Financial,Avg_Debt_to_Equity,1.711,All Accounts
+2026-01-01,Financial,Avg_Debt_to_Equity,1.632,All Accounts
+2026-02-01,Financial,Avg_Debt_to_Equity,1.697,All Accounts
+2026-03-01,Financial,Avg_Debt_to_Equity,1.823,All Accounts
+2026-04-01,Financial,Avg_Debt_to_Equity,1.726,All Accounts
+2026-05-01,Financial,Avg_Debt_to_Equity,1.773,All Accounts
+2026-06-01,Financial,Avg_Debt_to_Equity,1.789,All Accounts
+2026-07-01,Financial,Avg_Debt_to_Equity,1.646,All Accounts
+2026-08-01,Financial,Avg_Debt_to_Equity,1.782,All Accounts
+2026-09-01,Financial,Avg_Debt_to_Equity,1.829,All Accounts
+2026-10-01,Financial,Avg_Debt_to_Equity,1.902,All Accounts
+2026-11-01,Financial,Avg_Debt_to_Equity,1.78,All Accounts
+2026-12-01,Financial,Avg_Debt_to_Equity,1.709,All Accounts
+2027-01-01,Financial,Avg_Debt_to_Equity,1.628,All Accounts
+2027-02-01,Financial,Avg_Debt_to_Equity,1.552,All Accounts
+2027-03-01,Financial,Avg_Debt_to_Equity,1.785,All Accounts
+2027-04-01,Financial,Avg_Debt_to_Equity,1.802,All Accounts
+2027-05-01,Financial,Avg_Debt_to_Equity,1.778,All Accounts
+2027-06-01,Financial,Avg_Debt_to_Equity,1.885,All Accounts
+2027-07-01,Financial,Avg_Debt_to_Equity,1.818,All Accounts
+2027-08-01,Financial,Avg_Debt_to_Equity,1.899,All Accounts
+2027-09-01,Financial,Avg_Debt_to_Equity,2.112,All Accounts
+2025-01-01,Financial,Avg_Profit_Margin,0.565,All Accounts
+2025-02-01,Financial,Avg_Profit_Margin,0.475,All Accounts
+2025-03-01,Financial,Avg_Profit_Margin,0.524,All Accounts
+2025-04-01,Financial,Avg_Profit_Margin,0.48,All Accounts
+2025-05-01,Financial,Avg_Profit_Margin,0.51,All Accounts
+2025-06-01,Financial,Avg_Profit_Margin,0.532,All Accounts
+2025-07-01,Financial,Avg_Profit_Margin,0.474,All Accounts
+2025-08-01,Financial,Avg_Profit_Margin,0.469,All Accounts
+2025-09-01,Financial,Avg_Profit_Margin,0.556,All Accounts
+2025-10-01,Financial,Avg_Profit_Margin,0.483,All Accounts
+2025-11-01,Financial,Avg_Profit_Margin,0.517,All Accounts
+2025-12-01,Financial,Avg_Profit_Margin,0.55,All Accounts
+2026-01-01,Financial,Avg_Profit_Margin,0.522,All Accounts
+2026-02-01,Financial,Avg_Profit_Margin,0.43,All Accounts
+2026-03-01,Financial,Avg_Profit_Margin,0.467,All Accounts
+2026-04-01,Financial,Avg_Profit_Margin,0.446,All Accounts
+2026-05-01,Financial,Avg_Profit_Margin,0.459,All Accounts
+2026-06-01,Financial,Avg_Profit_Margin,0.506,All Accounts
+2026-07-01,Financial,Avg_Profit_Margin,0.543,All Accounts
+2026-08-01,Financial,Avg_Profit_Margin,0.497,All Accounts
+2026-09-01,Financial,Avg_Profit_Margin,0.516,All Accounts
+2026-10-01,Financial,Avg_Profit_Margin,0.485,All Accounts
+2026-11-01,Financial,Avg_Profit_Margin,0.533,All Accounts
+2026-12-01,Financial,Avg_Profit_Margin,0.501,All Accounts
+2027-01-01,Financial,Avg_Profit_Margin,0.511,All Accounts
+2027-02-01,Financial,Avg_Profit_Margin,0.468,All Accounts
+2027-03-01,Financial,Avg_Profit_Margin,0.521,All Accounts
+2027-04-01,Financial,Avg_Profit_Margin,0.514,All Accounts
+2027-05-01,Financial,Avg_Profit_Margin,0.464,All Accounts
+2027-06-01,Financial,Avg_Profit_Margin,0.471,All Accounts
+2027-07-01,Financial,Avg_Profit_Margin,0.455,All Accounts
+2027-08-01,Financial,Avg_Profit_Margin,0.507,All Accounts
+2027-09-01,Financial,Avg_Profit_Margin,0.512,All Accounts
+2025-01-01,Financial,Avg_Severity_Score,58.581,All Accounts
+2025-02-01,Financial,Avg_Severity_Score,48.161,All Accounts
+2025-03-01,Financial,Avg_Severity_Score,49.981,All Accounts
+2025-04-01,Financial,Avg_Severity_Score,53.807,All Accounts
+2025-05-01,Financial,Avg_Severity_Score,59.987,All Accounts
+2025-06-01,Financial,Avg_Severity_Score,33.16,All Accounts
+2025-07-01,Financial,Avg_Severity_Score,43.735,All Accounts
+2025-08-01,Financial,Avg_Severity_Score,46.445,All Accounts
+2025-09-01,Financial,Avg_Severity_Score,53.52,All Accounts
+2025-10-01,Financial,Avg_Severity_Score,55.119,All Accounts
+2025-11-01,Financial,Avg_Severity_Score,53.03,All Accounts
+2025-12-01,Financial,Avg_Severity_Score,59.106,All Accounts
+2026-01-01,Financial,Avg_Severity_Score,59.213,All Accounts
+2026-02-01,Financial,Avg_Severity_Score,42.989,All Accounts
+2026-03-01,Financial,Avg_Severity_Score,56.977,All Accounts
+2026-04-01,Financial,Avg_Severity_Score,45.033,All Accounts
+2026-05-01,Financial,Avg_Severity_Score,44.119,All Accounts
+2026-06-01,Financial,Avg_Severity_Score,54.773,All Accounts
+2026-07-01,Financial,Avg_Severity_Score,50.135,All Accounts
+2026-08-01,Financial,Avg_Severity_Score,48.845,All Accounts
+2026-09-01,Financial,Avg_Severity_Score,47.003,All Accounts
+2026-10-01,Financial,Avg_Severity_Score,50.148,All Accounts
+2026-11-01,Financial,Avg_Severity_Score,43.447,All Accounts
+2026-12-01,Financial,Avg_Severity_Score,52.729,All Accounts
+2027-01-01,Financial,Avg_Severity_Score,43.797,All Accounts
+2027-02-01,Financial,Avg_Severity_Score,45.514,All Accounts
+2027-03-01,Financial,Avg_Severity_Score,47.923,All Accounts
+2027-04-01,Financial,Avg_Severity_Score,44.343,All Accounts
+2027-05-01,Financial,Avg_Severity_Score,51.494,All Accounts
+2027-06-01,Financial,Avg_Severity_Score,48.223,All Accounts
+2027-07-01,Financial,Avg_Severity_Score,54.2,All Accounts
+2027-08-01,Financial,Avg_Severity_Score,59.452,All Accounts
+2027-09-01,Financial,Avg_Severity_Score,43.763,All Accounts
+2025-01-01,Financial,Total_Cash_Flow,82784.0,All Accounts
+2025-02-01,Financial,Total_Cash_Flow,62711.0,All Accounts
+2025-03-01,Financial,Total_Cash_Flow,70003.0,All Accounts
+2025-04-01,Financial,Total_Cash_Flow,74629.0,All Accounts
+2025-05-01,Financial,Total_Cash_Flow,70605.0,All Accounts
+2025-06-01,Financial,Total_Cash_Flow,67900.0,All Accounts
+2025-07-01,Financial,Total_Cash_Flow,69879.0,All Accounts
+2025-08-01,Financial,Total_Cash_Flow,61526.0,All Accounts
+2025-09-01,Financial,Total_Cash_Flow,73467.0,All Accounts
+2025-10-01,Financial,Total_Cash_Flow,77870.0,All Accounts
+2025-11-01,Financial,Total_Cash_Flow,73106.0,All Accounts
+2025-12-01,Financial,Total_Cash_Flow,76545.0,All Accounts
+2026-01-01,Financial,Total_Cash_Flow,74431.0,All Accounts
+2026-02-01,Financial,Total_Cash_Flow,63859.0,All Accounts
+2026-03-01,Financial,Total_Cash_Flow,72105.0,All Accounts
+2026-04-01,Financial,Total_Cash_Flow,79117.0,All Accounts
+2026-05-01,Financial,Total_Cash_Flow,79144.0,All Accounts
+2026-06-01,Financial,Total_Cash_Flow,75835.0,All Accounts
+2026-07-01,Financial,Total_Cash_Flow,73954.0,All Accounts
+2026-08-01,Financial,Total_Cash_Flow,66307.0,All Accounts
+2026-09-01,Financial,Total_Cash_Flow,77965.0,All Accounts
+2026-10-01,Financial,Total_Cash_Flow,86968.0,All Accounts
+2026-11-01,Financial,Total_Cash_Flow,70414.0,All Accounts
+2026-12-01,Financial,Total_Cash_Flow,86546.0,All Accounts
+2027-01-01,Financial,Total_Cash_Flow,79797.0,All Accounts
+2027-02-01,Financial,Total_Cash_Flow,71070.0,All Accounts
+2027-03-01,Financial,Total_Cash_Flow,68456.0,All Accounts
+2027-04-01,Financial,Total_Cash_Flow,75412.0,All Accounts
+2027-05-01,Financial,Total_Cash_Flow,75330.0,All Accounts
+2027-06-01,Financial,Total_Cash_Flow,65415.0,All Accounts
+2027-07-01,Financial,Total_Cash_Flow,74857.0,All Accounts
+2027-08-01,Financial,Total_Cash_Flow,82241.0,All Accounts
+2027-09-01,Financial,Total_Cash_Flow,66083.0,All Accounts
+2025-01-01,Financial,Total_Expenditure,58800.0,All Accounts
+2025-02-01,Financial,Total_Expenditure,66486.0,All Accounts
+2025-03-01,Financial,Total_Expenditure,60752.0,All Accounts
+2025-04-01,Financial,Total_Expenditure,56546.0,All Accounts
+2025-05-01,Financial,Total_Expenditure,46502.0,All Accounts
+2025-06-01,Financial,Total_Expenditure,48197.0,All Accounts
+2025-07-01,Financial,Total_Expenditure,73731.0,All Accounts
+2025-08-01,Financial,Total_Expenditure,54710.0,All Accounts
+2025-09-01,Financial,Total_Expenditure,63203.0,All Accounts
+2025-10-01,Financial,Total_Expenditure,65166.0,All Accounts
+2025-11-01,Financial,Total_Expenditure,56558.0,All Accounts
+2025-12-01,Financial,Total_Expenditure,64640.0,All Accounts
+2026-01-01,Financial,Total_Expenditure,63383.0,All Accounts
+2026-02-01,Financial,Total_Expenditure,54796.0,All Accounts
+2026-03-01,Financial,Total_Expenditure,60026.0,All Accounts
+2026-04-01,Financial,Total_Expenditure,63079.0,All Accounts
+2026-05-01,Financial,Total_Expenditure,67500.0,All Accounts
+2026-06-01,Financial,Total_Expenditure,66681.0,All Accounts
+2026-07-01,Financial,Total_Expenditure,69271.0,All Accounts
+2026-08-01,Financial,Total_Expenditure,62206.0,All Accounts
+2026-09-01,Financial,Total_Expenditure,62011.0,All Accounts
+2026-10-01,Financial,Total_Expenditure,65709.0,All Accounts
+2026-11-01,Financial,Total_Expenditure,65567.0,All Accounts
+2026-12-01,Financial,Total_Expenditure,69804.0,All Accounts
+2027-01-01,Financial,Total_Expenditure,61371.0,All Accounts
+2027-02-01,Financial,Total_Expenditure,50731.0,All Accounts
+2027-03-01,Financial,Total_Expenditure,60849.0,All Accounts
+2027-04-01,Financial,Total_Expenditure,57178.0,All Accounts
+2027-05-01,Financial,Total_Expenditure,61869.0,All Accounts
+2027-06-01,Financial,Total_Expenditure,63308.0,All Accounts
+2027-07-01,Financial,Total_Expenditure,62620.0,All Accounts
+2027-08-01,Financial,Total_Expenditure,62889.0,All Accounts
+2027-09-01,Financial,Total_Expenditure,60049.0,All Accounts
+2025-01-01,Financial,Total_Net_Income,75065.0,All Accounts
+2025-02-01,Financial,Total_Net_Income,58244.0,All Accounts
+2025-03-01,Financial,Total_Net_Income,59827.0,All Accounts
+2025-04-01,Financial,Total_Net_Income,56869.0,All Accounts
+2025-05-01,Financial,Total_Net_Income,71205.0,All Accounts
+2025-06-01,Financial,Total_Net_Income,59657.0,All Accounts
+2025-07-01,Financial,Total_Net_Income,65255.0,All Accounts
+2025-08-01,Financial,Total_Net_Income,64560.0,All Accounts
+2025-09-01,Financial,Total_Net_Income,66441.0,All Accounts
+2025-10-01,Financial,Total_Net_Income,67399.0,All Accounts
+2025-11-01,Financial,Total_Net_Income,65342.0,All Accounts
+2025-12-01,Financial,Total_Net_Income,64933.0,All Accounts
+2026-01-01,Financial,Total_Net_Income,73798.0,All Accounts
+2026-02-01,Financial,Total_Net_Income,54173.0,All Accounts
+2026-03-01,Financial,Total_Net_Income,70472.0,All Accounts
+2026-04-01,Financial,Total_Net_Income,56950.0,All Accounts
+2026-05-01,Financial,Total_Net_Income,62109.0,All Accounts
+2026-06-01,Financial,Total_Net_Income,66383.0,All Accounts
+2026-07-01,Financial,Total_Net_Income,65154.0,All Accounts
+2026-08-01,Financial,Total_Net_Income,70621.0,All Accounts
+2026-09-01,Financial,Total_Net_Income,67791.0,All Accounts
+2026-10-01,Financial,Total_Net_Income,65569.0,All Accounts
+2026-11-01,Financial,Total_Net_Income,66055.0,All Accounts
+2026-12-01,Financial,Total_Net_Income,68129.0,All Accounts
+2027-01-01,Financial,Total_Net_Income,60820.0,All Accounts
+2027-02-01,Financial,Total_Net_Income,64701.0,All Accounts
+2027-03-01,Financial,Total_Net_Income,58914.0,All Accounts
+2027-04-01,Financial,Total_Net_Income,63350.0,All Accounts
+2027-05-01,Financial,Total_Net_Income,60702.0,All Accounts
+2027-06-01,Financial,Total_Net_Income,62271.0,All Accounts
+2027-07-01,Financial,Total_Net_Income,70555.0,All Accounts
+2027-08-01,Financial,Total_Net_Income,52049.0,All Accounts
+2027-09-01,Financial,Total_Net_Income,59396.0,All Accounts
+2025-01-01,Financial,Total_Revenue,85103.0,All Accounts
+2025-02-01,Financial,Total_Revenue,82350.0,All Accounts
+2025-03-01,Financial,Total_Revenue,87633.0,All Accounts
+2025-04-01,Financial,Total_Revenue,87438.0,All Accounts
+2025-05-01,Financial,Total_Revenue,80445.0,All Accounts
+2025-06-01,Financial,Total_Revenue,86995.0,All Accounts
+2025-07-01,Financial,Total_Revenue,77158.0,All Accounts
+2025-08-01,Financial,Total_Revenue,81671.0,All Accounts
+2025-09-01,Financial,Total_Revenue,77324.0,All Accounts
+2025-10-01,Financial,Total_Revenue,83060.0,All Accounts
+2025-11-01,Financial,Total_Revenue,58566.0,All Accounts
+2025-12-01,Financial,Total_Revenue,76953.0,All Accounts
+2026-01-01,Financial,Total_Revenue,72637.0,All Accounts
+2026-02-01,Financial,Total_Revenue,73629.0,All Accounts
+2026-03-01,Financial,Total_Revenue,83259.0,All Accounts
+2026-04-01,Financial,Total_Revenue,78623.0,All Accounts
+2026-05-01,Financial,Total_Revenue,80936.0,All Accounts
+2026-06-01,Financial,Total_Revenue,89113.0,All Accounts
+2026-07-01,Financial,Total_Revenue,59437.0,All Accounts
+2026-08-01,Financial,Total_Revenue,69922.0,All Accounts
+2026-09-01,Financial,Total_Revenue,81018.0,All Accounts
+2026-10-01,Financial,Total_Revenue,94007.0,All Accounts
+2026-11-01,Financial,Total_Revenue,77839.0,All Accounts
+2026-12-01,Financial,Total_Revenue,87038.0,All Accounts
+2027-01-01,Financial,Total_Revenue,97158.0,All Accounts
+2027-02-01,Financial,Total_Revenue,69422.0,All Accounts
+2027-03-01,Financial,Total_Revenue,92953.0,All Accounts
+2027-04-01,Financial,Total_Revenue,64715.0,All Accounts
+2027-05-01,Financial,Total_Revenue,73911.0,All Accounts
+2027-06-01,Financial,Total_Revenue,73866.0,All Accounts
+2027-07-01,Financial,Total_Revenue,80935.0,All Accounts
+2027-08-01,Financial,Total_Revenue,77610.0,All Accounts
+2027-09-01,Financial,Total_Revenue,68265.0,All Accounts
+2025-01-01,Financial,Total_Transaction_Amount,79748.0,All Accounts
+2025-02-01,Financial,Total_Transaction_Amount,61923.0,All Accounts
+2025-03-01,Financial,Total_Transaction_Amount,69015.0,All Accounts
+2025-04-01,Financial,Total_Transaction_Amount,79122.0,All Accounts
+2025-05-01,Financial,Total_Transaction_Amount,74003.0,All Accounts
+2025-06-01,Financial,Total_Transaction_Amount,80893.0,All Accounts
+2025-07-01,Financial,Total_Transaction_Amount,79091.0,All Accounts
+2025-08-01,Financial,Total_Transaction_Amount,65601.0,All Accounts
+2025-09-01,Financial,Total_Transaction_Amount,79480.0,All Accounts
+2025-10-01,Financial,Total_Transaction_Amount,75332.0,All Accounts
+2025-11-01,Financial,Total_Transaction_Amount,69235.0,All Accounts
+2025-12-01,Financial,Total_Transaction_Amount,76607.0,All Accounts
+2026-01-01,Financial,Total_Transaction_Amount,83773.0,All Accounts
+2026-02-01,Financial,Total_Transaction_Amount,59335.0,All Accounts
+2026-03-01,Financial,Total_Transaction_Amount,78523.0,All Accounts
+2026-04-01,Financial,Total_Transaction_Amount,89631.0,All Accounts
+2026-05-01,Financial,Total_Transaction_Amount,74876.0,All Accounts
+2026-06-01,Financial,Total_Transaction_Amount,77328.0,All Accounts
+2026-07-01,Financial,Total_Transaction_Amount,72941.0,All Accounts
+2026-08-01,Financial,Total_Transaction_Amount,72029.0,All Accounts
+2026-09-01,Financial,Total_Transaction_Amount,76600.0,All Accounts
+2026-10-01,Financial,Total_Transaction_Amount,86766.0,All Accounts
+2026-11-01,Financial,Total_Transaction_Amount,76017.0,All Accounts
+2026-12-01,Financial,Total_Transaction_Amount,78274.0,All Accounts
+2027-01-01,Financial,Total_Transaction_Amount,93698.0,All Accounts
+2027-02-01,Financial,Total_Transaction_Amount,60844.0,All Accounts
+2027-03-01,Financial,Total_Transaction_Amount,90924.0,All Accounts
+2027-04-01,Financial,Total_Transaction_Amount,75303.0,All Accounts
+2027-05-01,Financial,Total_Transaction_Amount,85792.0,All Accounts
+2027-06-01,Financial,Total_Transaction_Amount,94140.0,All Accounts
+2027-07-01,Financial,Total_Transaction_Amount,72225.0,All Accounts
+2027-08-01,Financial,Total_Transaction_Amount,80897.0,All Accounts
+2027-09-01,Financial,Total_Transaction_Amount,65735.0,All Accounts
+2025-03-01,Project,Anomaly_Count,0.0,All Projects
+2025-04-01,Project,Anomaly_Count,1.0,All Projects
+2025-05-01,Project,Anomaly_Count,0.0,All Projects
+2025-06-01,Project,Anomaly_Count,0.0,All Projects
+2025-07-01,Project,Anomaly_Count,1.0,All Projects
+2025-08-01,Project,Anomaly_Count,0.0,All Projects
+2025-09-01,Project,Anomaly_Count,2.0,All Projects
+2025-10-01,Project,Anomaly_Count,0.0,All Projects
+2025-11-01,Project,Anomaly_Count,0.0,All Projects
+2025-12-01,Project,Anomaly_Count,0.0,All Projects
+2026-01-01,Project,Anomaly_Count,0.0,All Projects
+2026-02-01,Project,Anomaly_Count,0.0,All Projects
+2026-03-01,Project,Anomaly_Count,0.0,All Projects
+2026-04-01,Project,Anomaly_Count,0.0,All Projects
+2026-05-01,Project,Anomaly_Count,0.0,All Projects
+2026-06-01,Project,Anomaly_Count,1.0,All Projects
+2026-07-01,Project,Anomaly_Count,0.0,All Projects
+2026-08-01,Project,Anomaly_Count,0.0,All Projects
+2026-09-01,Project,Anomaly_Count,0.0,All Projects
+2026-10-01,Project,Anomaly_Count,1.0,All Projects
+2026-11-01,Project,Anomaly_Count,0.0,All Projects
+2026-12-01,Project,Anomaly_Count,2.0,All Projects
+2027-01-01,Project,Anomaly_Count,1.0,All Projects
+2027-02-01,Project,Anomaly_Count,0.0,All Projects
+2027-03-01,Project,Anomaly_Count,1.0,All Projects
+2025-03-01,Project,Anomaly_Rate,0.0,All Projects
+2025-04-01,Project,Anomaly_Rate,0.083,All Projects
+2025-05-01,Project,Anomaly_Rate,0.0,All Projects
+2025-06-01,Project,Anomaly_Rate,0.0,All Projects
+2025-07-01,Project,Anomaly_Rate,0.125,All Projects
+2025-08-01,Project,Anomaly_Rate,0.0,All Projects
+2025-09-01,Project,Anomaly_Rate,0.083,All Projects
+2025-10-01,Project,Anomaly_Rate,0.0,All Projects
+2025-11-01,Project,Anomaly_Rate,0.0,All Projects
+2025-12-01,Project,Anomaly_Rate,0.0,All Projects
+2026-01-01,Project,Anomaly_Rate,0.0,All Projects
+2026-02-01,Project,Anomaly_Rate,0.0,All Projects
+2026-03-01,Project,Anomaly_Rate,0.0,All Projects
+2026-04-01,Project,Anomaly_Rate,0.0,All Projects
+2026-05-01,Project,Anomaly_Rate,0.0,All Projects
+2026-06-01,Project,Anomaly_Rate,0.083,All Projects
+2026-07-01,Project,Anomaly_Rate,0.0,All Projects
+2026-08-01,Project,Anomaly_Rate,0.0,All Projects
+2026-09-01,Project,Anomaly_Rate,0.0,All Projects
+2026-10-01,Project,Anomaly_Rate,0.059,All Projects
+2026-11-01,Project,Anomaly_Rate,0.0,All Projects
+2026-12-01,Project,Anomaly_Rate,0.069,All Projects
+2027-01-01,Project,Anomaly_Rate,0.067,All Projects
+2027-02-01,Project,Anomaly_Rate,0.0,All Projects
+2027-03-01,Project,Anomaly_Rate,0.5,All Projects
+2025-03-01,Project,Avg_Budget_Variance_Pct,0.952,All Projects
+2025-04-01,Project,Avg_Budget_Variance_Pct,3.906,All Projects
+2025-05-01,Project,Avg_Budget_Variance_Pct,1.376,All Projects
+2025-06-01,Project,Avg_Budget_Variance_Pct,2.65,All Projects
+2025-07-01,Project,Avg_Budget_Variance_Pct,5.996,All Projects
+2025-08-01,Project,Avg_Budget_Variance_Pct,4.975,All Projects
+2025-09-01,Project,Avg_Budget_Variance_Pct,7.067,All Projects
+2025-10-01,Project,Avg_Budget_Variance_Pct,5.175,All Projects
+2025-11-01,Project,Avg_Budget_Variance_Pct,0.427,All Projects
+2025-12-01,Project,Avg_Budget_Variance_Pct,0.45,All Projects
+2026-01-01,Project,Avg_Budget_Variance_Pct,0.836,All Projects
+2026-02-01,Project,Avg_Budget_Variance_Pct,-3.274,All Projects
+2026-03-01,Project,Avg_Budget_Variance_Pct,3.606,All Projects
+2026-04-01,Project,Avg_Budget_Variance_Pct,-0.226,All Projects
+2026-05-01,Project,Avg_Budget_Variance_Pct,1.986,All Projects
+2026-06-01,Project,Avg_Budget_Variance_Pct,7.668,All Projects
+2026-07-01,Project,Avg_Budget_Variance_Pct,0.742,All Projects
+2026-08-01,Project,Avg_Budget_Variance_Pct,3.387,All Projects
+2026-09-01,Project,Avg_Budget_Variance_Pct,4.003,All Projects
+2026-10-01,Project,Avg_Budget_Variance_Pct,11.141,All Projects
+2026-11-01,Project,Avg_Budget_Variance_Pct,4.677,All Projects
+2026-12-01,Project,Avg_Budget_Variance_Pct,23.61,All Projects
+2027-01-01,Project,Avg_Budget_Variance_Pct,12.129,All Projects
+2027-02-01,Project,Avg_Budget_Variance_Pct,7.171,All Projects
+2027-03-01,Project,Avg_Budget_Variance_Pct,-46.036,All Projects
+2025-03-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-04-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-05-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-06-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-07-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-08-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-09-01,Project,Avg_Percent_Complete,99.983,All Projects
+2025-10-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-11-01,Project,Avg_Percent_Complete,100.0,All Projects
+2025-12-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-01-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-02-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-03-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-04-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-05-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-06-01,Project,Avg_Percent_Complete,91.9,All Projects
+2026-07-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-08-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-09-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-10-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-11-01,Project,Avg_Percent_Complete,100.0,All Projects
+2026-12-01,Project,Avg_Percent_Complete,96.666,All Projects
+2027-01-01,Project,Avg_Percent_Complete,93.633,All Projects
+2027-02-01,Project,Avg_Percent_Complete,100.0,All Projects
+2027-03-01,Project,Avg_Percent_Complete,98.35,All Projects
+2025-03-01,Project,Avg_Severity_Score,27.34,All Projects
+2025-04-01,Project,Avg_Severity_Score,37.292,All Projects
+2025-05-01,Project,Avg_Severity_Score,49.843,All Projects
+2025-06-01,Project,Avg_Severity_Score,46.273,All Projects
+2025-07-01,Project,Avg_Severity_Score,49.562,All Projects
+2025-08-01,Project,Avg_Severity_Score,25.41,All Projects
+2025-09-01,Project,Avg_Severity_Score,54.133,All Projects
+2025-10-01,Project,Avg_Severity_Score,77.03,All Projects
+2025-11-01,Project,Avg_Severity_Score,68.017,All Projects
+2025-12-01,Project,Avg_Severity_Score,48.678,All Projects
+2026-01-01,Project,Avg_Severity_Score,47.526,All Projects
+2026-02-01,Project,Avg_Severity_Score,41.0,All Projects
+2026-03-01,Project,Avg_Severity_Score,53.75,All Projects
+2026-04-01,Project,Avg_Severity_Score,62.638,All Projects
+2026-05-01,Project,Avg_Severity_Score,41.3,All Projects
+2026-06-01,Project,Avg_Severity_Score,55.958,All Projects
+2026-07-01,Project,Avg_Severity_Score,58.1,All Projects
+2026-08-01,Project,Avg_Severity_Score,27.611,All Projects
+2026-09-01,Project,Avg_Severity_Score,48.271,All Projects
+2026-10-01,Project,Avg_Severity_Score,38.171,All Projects
+2026-11-01,Project,Avg_Severity_Score,52.12,All Projects
+2026-12-01,Project,Avg_Severity_Score,63.203,All Projects
+2027-01-01,Project,Avg_Severity_Score,51.767,All Projects
+2027-02-01,Project,Avg_Severity_Score,37.514,All Projects
+2027-03-01,Project,Avg_Severity_Score,65.6,All Projects
+2025-03-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-04-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-05-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-06-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-07-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-08-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-09-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-10-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-11-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-12-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-01-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-02-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-03-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-04-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-05-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-06-01,Project,Delayed_Task_Rate,0.083,All Projects
+2026-07-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-08-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-09-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-10-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-11-01,Project,Delayed_Task_Rate,0.0,All Projects
+2026-12-01,Project,Delayed_Task_Rate,0.0,All Projects
+2027-01-01,Project,Delayed_Task_Rate,0.067,All Projects
+2027-02-01,Project,Delayed_Task_Rate,0.0,All Projects
+2027-03-01,Project,Delayed_Task_Rate,0.0,All Projects
+2025-03-01,Project,Total_Budget_Spent,213355.82,All Projects
+2025-04-01,Project,Total_Budget_Spent,652143.4,All Projects
+2025-05-01,Project,Total_Budget_Spent,134073.57,All Projects
+2025-06-01,Project,Total_Budget_Spent,616262.6,All Projects
+2025-07-01,Project,Total_Budget_Spent,420952.71,All Projects
+2025-08-01,Project,Total_Budget_Spent,438324.79,All Projects
+2025-09-01,Project,Total_Budget_Spent,902090.2,All Projects
+2025-10-01,Project,Total_Budget_Spent,430869.98,All Projects
+2025-11-01,Project,Total_Budget_Spent,484002.01,All Projects
+2025-12-01,Project,Total_Budget_Spent,387061.48,All Projects
+2026-01-01,Project,Total_Budget_Spent,540093.13,All Projects
+2026-02-01,Project,Total_Budget_Spent,87258.32,All Projects
+2026-03-01,Project,Total_Budget_Spent,114204.23,All Projects
+2026-04-01,Project,Total_Budget_Spent,125245.83,All Projects
+2026-05-01,Project,Total_Budget_Spent,182939.76,All Projects
+2026-06-01,Project,Total_Budget_Spent,211716.82,All Projects
+2026-07-01,Project,Total_Budget_Spent,135539.97,All Projects
+2026-08-01,Project,Total_Budget_Spent,314899.21,All Projects
+2026-09-01,Project,Total_Budget_Spent,776390.78,All Projects
+2026-10-01,Project,Total_Budget_Spent,853021.78,All Projects
+2026-11-01,Project,Total_Budget_Spent,866981.12,All Projects
+2026-12-01,Project,Total_Budget_Spent,1938948.7,All Projects
+2027-01-01,Project,Total_Budget_Spent,756997.44,All Projects
+2027-02-01,Project,Total_Budget_Spent,244879.39,All Projects
+2027-03-01,Project,Total_Budget_Spent,12494.08,All Projects
+2025-01-01,Workforce,Anomaly_Count,7.0,All Departments
+2025-02-01,Workforce,Anomaly_Count,4.0,All Departments
+2025-03-01,Workforce,Anomaly_Count,3.0,All Departments
+2025-04-01,Workforce,Anomaly_Count,7.0,All Departments
+2025-05-01,Workforce,Anomaly_Count,4.0,All Departments
+2025-06-01,Workforce,Anomaly_Count,6.0,All Departments
+2025-07-01,Workforce,Anomaly_Count,6.0,All Departments
+2025-08-01,Workforce,Anomaly_Count,2.0,All Departments
+2025-09-01,Workforce,Anomaly_Count,8.0,All Departments
+2025-10-01,Workforce,Anomaly_Count,4.0,All Departments
+2025-11-01,Workforce,Anomaly_Count,2.0,All Departments
+2025-12-01,Workforce,Anomaly_Count,5.0,All Departments
+2026-01-01,Workforce,Anomaly_Count,5.0,All Departments
+2026-02-01,Workforce,Anomaly_Count,5.0,All Departments
+2026-03-01,Workforce,Anomaly_Count,3.0,All Departments
+2026-04-01,Workforce,Anomaly_Count,9.0,All Departments
+2026-05-01,Workforce,Anomaly_Count,3.0,All Departments
+2026-06-01,Workforce,Anomaly_Count,4.0,All Departments
+2026-07-01,Workforce,Anomaly_Count,6.0,All Departments
+2026-08-01,Workforce,Anomaly_Count,6.0,All Departments
+2026-09-01,Workforce,Anomaly_Count,4.0,All Departments
+2026-10-01,Workforce,Anomaly_Count,5.0,All Departments
+2026-11-01,Workforce,Anomaly_Count,6.0,All Departments
+2026-12-01,Workforce,Anomaly_Count,2.0,All Departments
+2027-01-01,Workforce,Anomaly_Count,0.0,All Departments
+2027-02-01,Workforce,Anomaly_Count,2.0,All Departments
+2027-03-01,Workforce,Anomaly_Count,4.0,All Departments
+2027-04-01,Workforce,Anomaly_Count,5.0,All Departments
+2027-05-01,Workforce,Anomaly_Count,1.0,All Departments
+2027-06-01,Workforce,Anomaly_Count,4.0,All Departments
+2027-07-01,Workforce,Anomaly_Count,3.0,All Departments
+2027-08-01,Workforce,Anomaly_Count,6.0,All Departments
+2027-09-01,Workforce,Anomaly_Count,6.0,All Departments
+2025-01-01,Workforce,Anomaly_Rate,0.047,All Departments
+2025-02-01,Workforce,Anomaly_Rate,0.027,All Departments
+2025-03-01,Workforce,Anomaly_Rate,0.02,All Departments
+2025-04-01,Workforce,Anomaly_Rate,0.048,All Departments
+2025-05-01,Workforce,Anomaly_Rate,0.028,All Departments
+2025-06-01,Workforce,Anomaly_Rate,0.042,All Departments
+2025-07-01,Workforce,Anomaly_Rate,0.043,All Departments
+2025-08-01,Workforce,Anomaly_Rate,0.014,All Departments
+2025-09-01,Workforce,Anomaly_Rate,0.058,All Departments
+2025-10-01,Workforce,Anomaly_Rate,0.029,All Departments
+2025-11-01,Workforce,Anomaly_Rate,0.015,All Departments
+2025-12-01,Workforce,Anomaly_Rate,0.037,All Departments
+2026-01-01,Workforce,Anomaly_Rate,0.038,All Departments
+2026-02-01,Workforce,Anomaly_Rate,0.038,All Departments
+2026-03-01,Workforce,Anomaly_Rate,0.023,All Departments
+2026-04-01,Workforce,Anomaly_Rate,0.071,All Departments
+2026-05-01,Workforce,Anomaly_Rate,0.024,All Departments
+2026-06-01,Workforce,Anomaly_Rate,0.032,All Departments
+2026-07-01,Workforce,Anomaly_Rate,0.05,All Departments
+2026-08-01,Workforce,Anomaly_Rate,0.05,All Departments
+2026-09-01,Workforce,Anomaly_Rate,0.034,All Departments
+2026-10-01,Workforce,Anomaly_Rate,0.044,All Departments
+2026-11-01,Workforce,Anomaly_Rate,0.054,All Departments
+2026-12-01,Workforce,Anomaly_Rate,0.018,All Departments
+2027-01-01,Workforce,Anomaly_Rate,0.0,All Departments
+2027-02-01,Workforce,Anomaly_Rate,0.018,All Departments
+2027-03-01,Workforce,Anomaly_Rate,0.037,All Departments
+2027-04-01,Workforce,Anomaly_Rate,0.048,All Departments
+2027-05-01,Workforce,Anomaly_Rate,0.01,All Departments
+2027-06-01,Workforce,Anomaly_Rate,0.038,All Departments
+2027-07-01,Workforce,Anomaly_Rate,0.029,All Departments
+2027-08-01,Workforce,Anomaly_Rate,0.059,All Departments
+2027-09-01,Workforce,Anomaly_Rate,0.06,All Departments
+2025-01-01,Workforce,Avg_Attendance_Rate,85.175,All Departments
+2025-02-01,Workforce,Avg_Attendance_Rate,91.071,All Departments
+2025-03-01,Workforce,Avg_Attendance_Rate,90.548,All Departments
+2025-04-01,Workforce,Avg_Attendance_Rate,91.193,All Departments
+2025-05-01,Workforce,Avg_Attendance_Rate,91.557,All Departments
+2025-06-01,Workforce,Avg_Attendance_Rate,90.182,All Departments
+2025-07-01,Workforce,Avg_Attendance_Rate,90.764,All Departments
+2025-08-01,Workforce,Avg_Attendance_Rate,91.918,All Departments
+2025-09-01,Workforce,Avg_Attendance_Rate,90.789,All Departments
+2025-10-01,Workforce,Avg_Attendance_Rate,91.46,All Departments
+2025-11-01,Workforce,Avg_Attendance_Rate,91.893,All Departments
+2025-12-01,Workforce,Avg_Attendance_Rate,86.231,All Departments
+2026-01-01,Workforce,Avg_Attendance_Rate,85.061,All Departments
+2026-02-01,Workforce,Avg_Attendance_Rate,91.065,All Departments
+2026-03-01,Workforce,Avg_Attendance_Rate,91.801,All Departments
+2026-04-01,Workforce,Avg_Attendance_Rate,90.78,All Departments
+2026-05-01,Workforce,Avg_Attendance_Rate,92.051,All Departments
+2026-06-01,Workforce,Avg_Attendance_Rate,91.974,All Departments
+2026-07-01,Workforce,Avg_Attendance_Rate,91.661,All Departments
+2026-08-01,Workforce,Avg_Attendance_Rate,91.317,All Departments
+2026-09-01,Workforce,Avg_Attendance_Rate,92.188,All Departments
+2026-10-01,Workforce,Avg_Attendance_Rate,92.334,All Departments
+2026-11-01,Workforce,Avg_Attendance_Rate,90.694,All Departments
+2026-12-01,Workforce,Avg_Attendance_Rate,85.807,All Departments
+2027-01-01,Workforce,Avg_Attendance_Rate,86.417,All Departments
+2027-02-01,Workforce,Avg_Attendance_Rate,92.148,All Departments
+2027-03-01,Workforce,Avg_Attendance_Rate,92.242,All Departments
+2027-04-01,Workforce,Avg_Attendance_Rate,90.835,All Departments
+2027-05-01,Workforce,Avg_Attendance_Rate,91.855,All Departments
+2027-06-01,Workforce,Avg_Attendance_Rate,91.404,All Departments
+2027-07-01,Workforce,Avg_Attendance_Rate,90.911,All Departments
+2027-08-01,Workforce,Avg_Attendance_Rate,89.705,All Departments
+2027-09-01,Workforce,Avg_Attendance_Rate,91.082,All Departments
+2025-01-01,Workforce,Avg_Engagement_Score,67.913,All Departments
+2025-02-01,Workforce,Avg_Engagement_Score,67.82,All Departments
+2025-03-01,Workforce,Avg_Engagement_Score,67.854,All Departments
+2025-04-01,Workforce,Avg_Engagement_Score,67.919,All Departments
+2025-05-01,Workforce,Avg_Engagement_Score,67.703,All Departments
+2025-06-01,Workforce,Avg_Engagement_Score,68.22,All Departments
+2025-07-01,Workforce,Avg_Engagement_Score,68.487,All Departments
+2025-08-01,Workforce,Avg_Engagement_Score,67.626,All Departments
+2025-09-01,Workforce,Avg_Engagement_Score,67.764,All Departments
+2025-10-01,Workforce,Avg_Engagement_Score,68.206,All Departments
+2025-11-01,Workforce,Avg_Engagement_Score,68.357,All Departments
+2025-12-01,Workforce,Avg_Engagement_Score,67.774,All Departments
+2026-01-01,Workforce,Avg_Engagement_Score,68.979,All Departments
+2026-02-01,Workforce,Avg_Engagement_Score,67.714,All Departments
+2026-03-01,Workforce,Avg_Engagement_Score,67.912,All Departments
+2026-04-01,Workforce,Avg_Engagement_Score,66.867,All Departments
+2026-05-01,Workforce,Avg_Engagement_Score,67.778,All Departments
+2026-06-01,Workforce,Avg_Engagement_Score,68.923,All Departments
+2026-07-01,Workforce,Avg_Engagement_Score,67.6,All Departments
+2026-08-01,Workforce,Avg_Engagement_Score,66.972,All Departments
+2026-09-01,Workforce,Avg_Engagement_Score,66.238,All Departments
+2026-10-01,Workforce,Avg_Engagement_Score,67.658,All Departments
+2026-11-01,Workforce,Avg_Engagement_Score,68.197,All Departments
+2026-12-01,Workforce,Avg_Engagement_Score,68.167,All Departments
+2027-01-01,Workforce,Avg_Engagement_Score,68.306,All Departments
+2027-02-01,Workforce,Avg_Engagement_Score,67.42,All Departments
+2027-03-01,Workforce,Avg_Engagement_Score,67.131,All Departments
+2027-04-01,Workforce,Avg_Engagement_Score,67.449,All Departments
+2027-05-01,Workforce,Avg_Engagement_Score,67.762,All Departments
+2027-06-01,Workforce,Avg_Engagement_Score,68.771,All Departments
+2027-07-01,Workforce,Avg_Engagement_Score,68.919,All Departments
+2027-08-01,Workforce,Avg_Engagement_Score,68.437,All Departments
+2027-09-01,Workforce,Avg_Engagement_Score,67.937,All Departments
+2025-01-01,Workforce,Avg_Overtime_Hours,6.703,All Departments
+2025-02-01,Workforce,Avg_Overtime_Hours,7.099,All Departments
+2025-03-01,Workforce,Avg_Overtime_Hours,6.43,All Departments
+2025-04-01,Workforce,Avg_Overtime_Hours,6.37,All Departments
+2025-05-01,Workforce,Avg_Overtime_Hours,6.459,All Departments
+2025-06-01,Workforce,Avg_Overtime_Hours,6.115,All Departments
+2025-07-01,Workforce,Avg_Overtime_Hours,6.441,All Departments
+2025-08-01,Workforce,Avg_Overtime_Hours,5.688,All Departments
+2025-09-01,Workforce,Avg_Overtime_Hours,7.233,All Departments
+2025-10-01,Workforce,Avg_Overtime_Hours,14.857,All Departments
+2025-11-01,Workforce,Avg_Overtime_Hours,13.476,All Departments
+2025-12-01,Workforce,Avg_Overtime_Hours,14.292,All Departments
+2026-01-01,Workforce,Avg_Overtime_Hours,6.19,All Departments
+2026-02-01,Workforce,Avg_Overtime_Hours,6.124,All Departments
+2026-03-01,Workforce,Avg_Overtime_Hours,6.372,All Departments
+2026-04-01,Workforce,Avg_Overtime_Hours,6.996,All Departments
+2026-05-01,Workforce,Avg_Overtime_Hours,6.19,All Departments
+2026-06-01,Workforce,Avg_Overtime_Hours,6.542,All Departments
+2026-07-01,Workforce,Avg_Overtime_Hours,6.527,All Departments
+2026-08-01,Workforce,Avg_Overtime_Hours,6.137,All Departments
+2026-09-01,Workforce,Avg_Overtime_Hours,6.577,All Departments
+2026-10-01,Workforce,Avg_Overtime_Hours,13.765,All Departments
+2026-11-01,Workforce,Avg_Overtime_Hours,14.218,All Departments
+2026-12-01,Workforce,Avg_Overtime_Hours,13.541,All Departments
+2027-01-01,Workforce,Avg_Overtime_Hours,5.586,All Departments
+2027-02-01,Workforce,Avg_Overtime_Hours,6.812,All Departments
+2027-03-01,Workforce,Avg_Overtime_Hours,6.739,All Departments
+2027-04-01,Workforce,Avg_Overtime_Hours,4.782,All Departments
+2027-05-01,Workforce,Avg_Overtime_Hours,6.13,All Departments
+2027-06-01,Workforce,Avg_Overtime_Hours,5.921,All Departments
+2027-07-01,Workforce,Avg_Overtime_Hours,5.297,All Departments
+2027-08-01,Workforce,Avg_Overtime_Hours,6.026,All Departments
+2027-09-01,Workforce,Avg_Overtime_Hours,6.709,All Departments
+2025-01-01,Workforce,Avg_Productivity_Score,74.457,All Departments
+2025-02-01,Workforce,Avg_Productivity_Score,73.534,All Departments
+2025-03-01,Workforce,Avg_Productivity_Score,74.561,All Departments
+2025-04-01,Workforce,Avg_Productivity_Score,74.623,All Departments
+2025-05-01,Workforce,Avg_Productivity_Score,73.899,All Departments
+2025-06-01,Workforce,Avg_Productivity_Score,74.932,All Departments
+2025-07-01,Workforce,Avg_Productivity_Score,69.933,All Departments
+2025-08-01,Workforce,Avg_Productivity_Score,71.017,All Departments
+2025-09-01,Workforce,Avg_Productivity_Score,74.2,All Departments
+2025-10-01,Workforce,Avg_Productivity_Score,74.354,All Departments
+2025-11-01,Workforce,Avg_Productivity_Score,73.843,All Departments
+2025-12-01,Workforce,Avg_Productivity_Score,74.851,All Departments
+2026-01-01,Workforce,Avg_Productivity_Score,74.867,All Departments
+2026-02-01,Workforce,Avg_Productivity_Score,74.444,All Departments
+2026-03-01,Workforce,Avg_Productivity_Score,75.345,All Departments
+2026-04-01,Workforce,Avg_Productivity_Score,73.971,All Departments
+2026-05-01,Workforce,Avg_Productivity_Score,73.882,All Departments
+2026-06-01,Workforce,Avg_Productivity_Score,73.882,All Departments
+2026-07-01,Workforce,Avg_Productivity_Score,70.534,All Departments
+2026-08-01,Workforce,Avg_Productivity_Score,69.068,All Departments
+2026-09-01,Workforce,Avg_Productivity_Score,74.287,All Departments
+2026-10-01,Workforce,Avg_Productivity_Score,74.282,All Departments
+2026-11-01,Workforce,Avg_Productivity_Score,73.735,All Departments
+2026-12-01,Workforce,Avg_Productivity_Score,74.076,All Departments
+2027-01-01,Workforce,Avg_Productivity_Score,73.858,All Departments
+2027-02-01,Workforce,Avg_Productivity_Score,72.876,All Departments
+2027-03-01,Workforce,Avg_Productivity_Score,73.715,All Departments
+2027-04-01,Workforce,Avg_Productivity_Score,74.941,All Departments
+2027-05-01,Workforce,Avg_Productivity_Score,74.401,All Departments
+2027-06-01,Workforce,Avg_Productivity_Score,74.225,All Departments
+2027-07-01,Workforce,Avg_Productivity_Score,71.773,All Departments
+2027-08-01,Workforce,Avg_Productivity_Score,69.765,All Departments
+2027-09-01,Workforce,Avg_Productivity_Score,74.453,All Departments
+2025-01-01,Workforce,Avg_Severity_Score,58.689,All Departments
+2025-02-01,Workforce,Avg_Severity_Score,46.409,All Departments
+2025-03-01,Workforce,Avg_Severity_Score,44.044,All Departments
+2025-04-01,Workforce,Avg_Severity_Score,44.986,All Departments
+2025-05-01,Workforce,Avg_Severity_Score,46.143,All Departments
+2025-06-01,Workforce,Avg_Severity_Score,45.441,All Departments
+2025-07-01,Workforce,Avg_Severity_Score,45.639,All Departments
+2025-08-01,Workforce,Avg_Severity_Score,46.358,All Departments
+2025-09-01,Workforce,Avg_Severity_Score,46.502,All Departments
+2025-10-01,Workforce,Avg_Severity_Score,61.642,All Departments
+2025-11-01,Workforce,Avg_Severity_Score,56.785,All Departments
+2025-12-01,Workforce,Avg_Severity_Score,66.818,All Departments
+2026-01-01,Workforce,Avg_Severity_Score,54.005,All Departments
+2026-02-01,Workforce,Avg_Severity_Score,44.263,All Departments
+2026-03-01,Workforce,Avg_Severity_Score,44.843,All Departments
+2026-04-01,Workforce,Avg_Severity_Score,50.775,All Departments
+2026-05-01,Workforce,Avg_Severity_Score,42.78,All Departments
+2026-06-01,Workforce,Avg_Severity_Score,44.346,All Departments
+2026-07-01,Workforce,Avg_Severity_Score,50.09,All Departments
+2026-08-01,Workforce,Avg_Severity_Score,49.131,All Departments
+2026-09-01,Workforce,Avg_Severity_Score,48.874,All Departments
+2026-10-01,Workforce,Avg_Severity_Score,62.063,All Departments
+2026-11-01,Workforce,Avg_Severity_Score,63.66,All Departments
+2026-12-01,Workforce,Avg_Severity_Score,67.743,All Departments
+2027-01-01,Workforce,Avg_Severity_Score,53.483,All Departments
+2027-02-01,Workforce,Avg_Severity_Score,45.85,All Departments
+2027-03-01,Workforce,Avg_Severity_Score,45.707,All Departments
+2027-04-01,Workforce,Avg_Severity_Score,43.773,All Departments
+2027-05-01,Workforce,Avg_Severity_Score,45.867,All Departments
+2027-06-01,Workforce,Avg_Severity_Score,47.715,All Departments
+2027-07-01,Workforce,Avg_Severity_Score,40.909,All Departments
+2027-08-01,Workforce,Avg_Severity_Score,47.85,All Departments
+2027-09-01,Workforce,Avg_Severity_Score,47.015,All Departments
+2025-01-01,Workforce,Avg_Training_Hours,4.893,All Departments
+2025-02-01,Workforce,Avg_Training_Hours,4.034,All Departments
+2025-03-01,Workforce,Avg_Training_Hours,3.571,All Departments
+2025-04-01,Workforce,Avg_Training_Hours,3.767,All Departments
+2025-05-01,Workforce,Avg_Training_Hours,3.895,All Departments
+2025-06-01,Workforce,Avg_Training_Hours,5.063,All Departments
+2025-07-01,Workforce,Avg_Training_Hours,3.957,All Departments
+2025-08-01,Workforce,Avg_Training_Hours,4.065,All Departments
+2025-09-01,Workforce,Avg_Training_Hours,4.117,All Departments
+2025-10-01,Workforce,Avg_Training_Hours,3.963,All Departments
+2025-11-01,Workforce,Avg_Training_Hours,3.757,All Departments
+2025-12-01,Workforce,Avg_Training_Hours,4.127,All Departments
+2026-01-01,Workforce,Avg_Training_Hours,5.008,All Departments
+2026-02-01,Workforce,Avg_Training_Hours,4.146,All Departments
+2026-03-01,Workforce,Avg_Training_Hours,3.734,All Departments
+2026-04-01,Workforce,Avg_Training_Hours,4.04,All Departments
+2026-05-01,Workforce,Avg_Training_Hours,3.698,All Departments
+2026-06-01,Workforce,Avg_Training_Hours,4.992,All Departments
+2026-07-01,Workforce,Avg_Training_Hours,3.777,All Departments
+2026-08-01,Workforce,Avg_Training_Hours,4.223,All Departments
+2026-09-01,Workforce,Avg_Training_Hours,3.752,All Departments
+2026-10-01,Workforce,Avg_Training_Hours,4.425,All Departments
+2026-11-01,Workforce,Avg_Training_Hours,3.793,All Departments
+2026-12-01,Workforce,Avg_Training_Hours,4.234,All Departments
+2027-01-01,Workforce,Avg_Training_Hours,4.845,All Departments
+2027-02-01,Workforce,Avg_Training_Hours,4.183,All Departments
+2027-03-01,Workforce,Avg_Training_Hours,3.899,All Departments
+2027-04-01,Workforce,Avg_Training_Hours,3.952,All Departments
+2027-05-01,Workforce,Avg_Training_Hours,3.752,All Departments
+2027-06-01,Workforce,Avg_Training_Hours,4.962,All Departments
+2027-07-01,Workforce,Avg_Training_Hours,4.137,All Departments
+2027-08-01,Workforce,Avg_Training_Hours,4.129,All Departments
+2027-09-01,Workforce,Avg_Training_Hours,4.17,All Departments
+2025-01-01,Workforce,Turnover_Rate,0.007,All Departments
+2025-02-01,Workforce,Turnover_Rate,0.013,All Departments
+2025-03-01,Workforce,Turnover_Rate,0.007,All Departments
+2025-04-01,Workforce,Turnover_Rate,0.021,All Departments
+2025-05-01,Workforce,Turnover_Rate,0.007,All Departments
+2025-06-01,Workforce,Turnover_Rate,0.014,All Departments
+2025-07-01,Workforce,Turnover_Rate,0.014,All Departments
+2025-08-01,Workforce,Turnover_Rate,0.007,All Departments
+2025-09-01,Workforce,Turnover_Rate,0.007,All Departments
+2025-10-01,Workforce,Turnover_Rate,0.0,All Departments
+2025-11-01,Workforce,Turnover_Rate,0.015,All Departments
+2025-12-01,Workforce,Turnover_Rate,0.015,All Departments
+2026-01-01,Workforce,Turnover_Rate,0.015,All Departments
+2026-02-01,Workforce,Turnover_Rate,0.015,All Departments
+2026-03-01,Workforce,Turnover_Rate,0.016,All Departments
+2026-04-01,Workforce,Turnover_Rate,0.0,All Departments
+2026-05-01,Workforce,Turnover_Rate,0.008,All Departments
+2026-06-01,Workforce,Turnover_Rate,0.032,All Departments
+2026-07-01,Workforce,Turnover_Rate,0.0,All Departments
+2026-08-01,Workforce,Turnover_Rate,0.033,All Departments
+2026-09-01,Workforce,Turnover_Rate,0.034,All Departments
+2026-10-01,Workforce,Turnover_Rate,0.018,All Departments
+2026-11-01,Workforce,Turnover_Rate,0.0,All Departments
+2026-12-01,Workforce,Turnover_Rate,0.009,All Departments
+2027-01-01,Workforce,Turnover_Rate,0.009,All Departments
+2027-02-01,Workforce,Turnover_Rate,0.0,All Departments
+2027-03-01,Workforce,Turnover_Rate,0.037,All Departments
+2027-04-01,Workforce,Turnover_Rate,0.0,All Departments
+2027-05-01,Workforce,Turnover_Rate,0.01,All Departments
+2027-06-01,Workforce,Turnover_Rate,0.019,All Departments
+2027-07-01,Workforce,Turnover_Rate,0.01,All Departments
+2027-08-01,Workforce,Turnover_Rate,0.01,All Departments
+2027-09-01,Workforce,Turnover_Rate,0.03,All Departments
