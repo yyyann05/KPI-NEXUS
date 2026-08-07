@@ -308,7 +308,7 @@ export default function FinancialDashboardPage() {
   // Trend data – filtered by dateRange from TopBar period selector
   const trendData = useMemo(() =>
     FINANCIAL_MONTHLY
-      .filter(r => r.month >= dateRange.start && r.month <= dateRange.end)
+      .filter(r => r.date.slice(0, 7) >= dateRange.start && r.date.slice(0, 7) <= dateRange.end)
       .map(r => ({
         month: r.month,
         Revenue:     r.revenue,
@@ -324,7 +324,7 @@ export default function FinancialDashboardPage() {
   // Forecast chart data – also filtered by period
   const forecastData = useMemo(() =>
     FINANCIAL_FORECAST
-      .filter(r => r.month >= dateRange.start && r.month <= dateRange.end)
+      .filter(r => r.date.slice(0, 7) >= dateRange.start && r.date.slice(0, 7) <= dateRange.end)
       .map(r => ({
         month: r.month,
         revenue_actual:   r.revenue_actual,
@@ -344,7 +344,7 @@ export default function FinancialDashboardPage() {
   const filteredAnomalies = useMemo(
     () => FINANCIAL_ANOMALY_EVENTS
       .filter(e => {
-        const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+        const inPeriod = e.date.slice(0, 7) >= dateRange.start && e.date.slice(0, 7) <= dateRange.end;
         const inSev = sevFilter === 'all' || e.severity === sevFilter;
         return inPeriod && inSev;
       }),

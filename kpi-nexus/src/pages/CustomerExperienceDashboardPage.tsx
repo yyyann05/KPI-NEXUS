@@ -1,5 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import { useFilterStore } from '../store';
+
+// Convert "Jan 2025" or "Nov 2025" → "2025-01" for dateRange comparison
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function monthToISO(s: string): string {
+  const parts = s.trim().split(' ');
+  if (parts.length === 2) {
+    const mi = MONTH_NAMES.indexOf(parts[0]);
+    if (mi !== -1) return `${parts[1]}-${String(mi + 1).padStart(2, '0')}`;
+  }
+  return s;
+}
 import {
   AreaChart,
   Area,
@@ -324,13 +335,16 @@ export default function CustomerExperienceDashboardPage() {
 
   // ── Period-filtered monthly data ──────────────────────────────────────────
   const filteredMonthly = useMemo(() =>
-    CX_MONTHLY.filter(r => r.month >= dateRange.start && r.month <= dateRange.end),
+    CX_MONTHLY.filter(r => {
+      const iso = monthToISO(r.month);
+      return iso >= dateRange.start && iso <= dateRange.end;
+    }),
     [dateRange]);
 
   // ── Filtered anomalies ────────────────────────────────────────────────────
   const filteredAnomalies = useMemo(() =>
     CX_ANOMALY_EVENTS.filter(e => {
-      const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+      const inPeriod = monthToISO(e.date) >= dateRange.start && monthToISO(e.date) <= dateRange.end;
       const inSev = sevFilter === 'all' || e.severity === sevFilter;
       return inPeriod && inSev;
     }),
@@ -339,7 +353,10 @@ export default function CustomerExperienceDashboardPage() {
   // ── Forecast dataset (also filtered by period) ───────────────────────────
   const forecastData = useMemo(() => {
     const raw = { csat: CSAT_FORECAST, nps: NPS_FORECAST, response: RESPONSE_FORECAST }[forecastKey];
-    return raw.filter(r => r.month >= dateRange.start && r.month <= dateRange.end);
+    return raw.filter(r => {
+      const iso = monthToISO(r.month);
+      return iso >= dateRange.start && iso <= dateRange.end;
+    });
   }, [forecastKey, dateRange]);
   const forecastLabel = { csat: 'CSAT Score', nps: 'NPS Score', response: 'Response Time (min)' }[forecastKey];
   const forecastColor = { csat: C.csat, nps: C.nps, response: C.response }[forecastKey];

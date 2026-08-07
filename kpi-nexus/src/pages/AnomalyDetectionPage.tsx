@@ -32,6 +32,21 @@ import {
 } from '../data/anomalyData';
 import type { DomainType } from '../types/kpi';
 
+// Convert "Jan 25" → "2025-01"  or  "Apr 2027" → "2027-04"
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function monthToISO(s: string): string {
+  const parts = s.trim().split(' ');
+  if (parts.length === 2) {
+    const mi = MONTH_NAMES.indexOf(parts[0]);
+    if (mi !== -1) {
+      // "25" → "2025", "2025" stays "2025"
+      const yr = parts[1].length === 2 ? `20${parts[1]}` : parts[1];
+      return `${yr}-${String(mi + 1).padStart(2, '0')}`;
+    }
+  }
+  return s;
+}
+
 // ── Palette ──────────────────────────────────────────────────
 
 const DOMAIN_COLORS: Record<DomainType | string, string> = {
@@ -196,8 +211,9 @@ const AnomalyDetectionPage: React.FC = () => {
     return FLAGGED_KPIS.filter((k) => {
       const domainOk = domainFilter === 'All' || k.domain === domainFilter;
       const sevOk    = severityFilter === 'All' || k.severity === severityFilter;
-      // Filter by last anomaly month within selected period
-      const inPeriod = !k.lastAnomaly || (k.lastAnomaly >= dateRange.start && k.lastAnomaly <= dateRange.end);
+      // Filter by last flagged month within selected period
+      const iso = k.lastFlaggedMonth ? monthToISO(k.lastFlaggedMonth) : null;
+      const inPeriod = !iso || (iso >= dateRange.start && iso <= dateRange.end);
       return domainOk && sevOk && inPeriod;
     });
   }, [domainFilter, severityFilter, dateRange]);
@@ -261,7 +277,7 @@ const AnomalyDetectionPage: React.FC = () => {
           <p className="text-gray-500 text-xs mt-0.5">Monthly anomaly counts by business domain</p>
         </div>
         <ResponsiveContainer width="100%" height={280}>
-          <ComposedChart data={ANOMALY_TIMELINE.filter(r => r.month >= dateRange.start && r.month <= dateRange.end)} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+          <ComposedChart data={ANOMALY_TIMELINE.filter(r => { const iso = monthToISO(r.month); return iso >= dateRange.start && iso <= dateRange.end; })} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
             <XAxis
               dataKey="month"

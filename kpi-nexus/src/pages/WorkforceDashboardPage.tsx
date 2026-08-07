@@ -250,7 +250,7 @@ export default function WorkforceDashboardPage() {
   // Recharts-friendly trend rows — filtered by period selector
   const trend = useMemo(() =>
     WORKFORCE_MONTHLY
-      .filter(r => r.month >= dateRange.start && r.month <= dateRange.end)
+      .filter(r => r.date.slice(0, 7) >= dateRange.start && r.date.slice(0, 7) <= dateRange.end)
       .map(r => ({
         month: r.month,
         Attendance:    +r.attendance.toFixed(2),
@@ -267,7 +267,7 @@ export default function WorkforceDashboardPage() {
 
   const filteredAnomalies = useMemo(
     () => WORKFORCE_ANOMALY_EVENTS.filter(e => {
-      const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+      const inPeriod = e.date.slice(0, 7) >= dateRange.start && e.date.slice(0, 7) <= dateRange.end;
       const inSev = sevFilter === 'all' || e.severity === sevFilter;
       return inPeriod && inSev;
     }),
@@ -495,7 +495,7 @@ export default function WorkforceDashboardPage() {
           <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-sm bg-indigo-500/20 border border-indigo-500/30" />95% CI Band</span>
         </div>
         <ResponsiveContainer width="100%" height={260}>
-          <ComposedChart data={WORKFORCE_FORECAST.filter(r => r.month >= dateRange.start && r.month <= dateRange.end)} margin={{ top:4, right:16, left:0, bottom:0 }}>
+          <ComposedChart data={WORKFORCE_FORECAST.filter(r => r.date.slice(0, 7) >= dateRange.start && r.date.slice(0, 7) <= dateRange.end)} margin={{ top:4, right:16, left:0, bottom:0 }}>
             <defs>
               <linearGradient id="gradBandWF" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%"  stopColor={C.forecast} stopOpacity={0.20} />

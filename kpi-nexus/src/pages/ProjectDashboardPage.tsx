@@ -1,5 +1,16 @@
 import React, { useState, useMemo } from 'react';
 import { useFilterStore } from '../store';
+
+// Convert "Mar 2024" or "Jan 2026" → "2024-03" for dateRange comparison
+const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function monthToISO(s: string): string {
+  const parts = s.trim().split(' ');
+  if (parts.length === 2) {
+    const mi = MONTH_NAMES.indexOf(parts[0]);
+    if (mi !== -1) return `${parts[1]}-${String(mi + 1).padStart(2, '0')}`;
+  }
+  return s;
+}
 import {
   AreaChart,
   Area,
@@ -307,12 +318,15 @@ export default function ProjectDashboardPage() {
 
   // Period-filtered monthly data
   const filteredMonthly = useMemo(() =>
-    PROJECT_MONTHLY.filter(r => r.month >= dateRange.start && r.month <= dateRange.end),
+    PROJECT_MONTHLY.filter(r => {
+      const iso = monthToISO(r.month);
+      return iso >= dateRange.start && iso <= dateRange.end;
+    }),
     [dateRange]);
 
   const filteredAnomalies = useMemo(() =>
     PROJECT_ANOMALY_EVENTS.filter(e => {
-      const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+      const inPeriod = monthToISO(e.date) >= dateRange.start && monthToISO(e.date) <= dateRange.end;
       const inSev = sevFilter === 'all' || e.severity === sevFilter;
       return inPeriod && inSev;
     }),
@@ -320,7 +334,10 @@ export default function ProjectDashboardPage() {
 
   const forecastData = useMemo(() => {
     const raw = forecastKey === 'completion' ? COMPLETION_FORECAST : BUDGET_VARIANCE_FORECAST;
-    return raw.filter(r => r.month >= dateRange.start && r.month <= dateRange.end);
+    return raw.filter(r => {
+      const iso = monthToISO(r.month);
+      return iso >= dateRange.start && iso <= dateRange.end;
+    });
   }, [forecastKey, dateRange]);
   const forecastColor = forecastKey === 'completion' ? C.completion : C.budget;
   const forecastLabel = forecastKey === 'completion' ? 'Completion Rate (%)' : 'Budget Variance (%)';
