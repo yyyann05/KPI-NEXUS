@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useFilterStore } from '../store';
 import {
   ComposedChart,
   Bar,
@@ -189,14 +190,17 @@ function AlertCard({ kpi }: { kpi: FlaggedKpi }) {
 const AnomalyDetectionPage: React.FC = () => {
   const [domainFilter, setDomainFilter] = useState<DomainType | 'All'>('All');
   const [severityFilter, setSeverityFilter] = useState<'All' | 'critical' | 'warning' | 'low'>('All');
+  const { dateRange } = useFilterStore();
 
   const filteredKpis = useMemo(() => {
     return FLAGGED_KPIS.filter((k) => {
       const domainOk = domainFilter === 'All' || k.domain === domainFilter;
       const sevOk    = severityFilter === 'All' || k.severity === severityFilter;
-      return domainOk && sevOk;
+      // Filter by last anomaly month within selected period
+      const inPeriod = !k.lastAnomaly || (k.lastAnomaly >= dateRange.start && k.lastAnomaly <= dateRange.end);
+      return domainOk && sevOk && inPeriod;
     });
-  }, [domainFilter, severityFilter]);
+  }, [domainFilter, severityFilter, dateRange]);
 
   const s = ANOMALY_SUMMARY_STATS;
 
@@ -257,7 +261,7 @@ const AnomalyDetectionPage: React.FC = () => {
           <p className="text-gray-500 text-xs mt-0.5">Monthly anomaly counts by business domain</p>
         </div>
         <ResponsiveContainer width="100%" height={280}>
-          <ComposedChart data={ANOMALY_TIMELINE} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+          <ComposedChart data={ANOMALY_TIMELINE.filter(r => r.month >= dateRange.start && r.month <= dateRange.end)} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
             <XAxis
               dataKey="month"

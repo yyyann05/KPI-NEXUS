@@ -104,10 +104,12 @@ export function TopBar() {
               setDateRange({ start, end });
             }}
           >
-            <option value="2025-01|2026-07">Jan 2025 – Jul 2026</option>
+            <option value="2025-01|2027-09">All Data (Jan 2025 – Sep 2027)</option>
             <option value="2025-01|2025-12">Full Year 2025</option>
-            <option value="2026-01|2026-07">YTD 2026</option>
-            <option value="2025-07|2026-07">Last 12 Months</option>
+            <option value="2026-01|2026-12">Full Year 2026</option>
+            <option value="2027-01|2027-09">YTD 2027</option>
+            <option value="2026-10|2027-09">Last 12 Months</option>
+            <option value="2025-01|2026-12">2025 – 2026</option>
           </select>
           <ChevronDown className="h-3 w-3 text-text-muted" />
         </div>

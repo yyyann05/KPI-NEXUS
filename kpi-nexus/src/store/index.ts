@@ -34,7 +34,7 @@ export const useUIStore = create<UIState>((set) => ({
 const defaultFilter: FilterState = {
   activeDomain: 'All',
   activeKpi: null,
-  dateRange: { start: '2025-01', end: '2026-07' },
+  dateRange: { start: '2025-01', end: '2027-09' },
 };
 
 export const useFilterStore = create<FilterStoreState>((set) => ({

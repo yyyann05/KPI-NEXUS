@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useFilterStore } from '../store';
 import {
   AreaChart,
   Area,
@@ -300,40 +301,54 @@ export default function FinancialDashboardPage() {
   const [expandedAnomaly, setExpandedAnomaly] = useState<number | null>(null);
   const [sevFilter, setSevFilter] = useState<'all' | 'critical' | 'warning' | 'low'>('all');
   const [forecastMetric, setForecastMetric] = useState<'revenue' | 'cashFlow'>('revenue');
+  const { dateRange } = useFilterStore();
 
   const { revenue, cashFlow, netIncome, profitMargin, expenditure, debtToEquity, latestMonth } = FINANCIAL_SUMMARY;
 
-  // Trend data – show all 33 months for area charts
-  const trendData = FINANCIAL_MONTHLY.map(r => ({
-    month: r.month,
-    Revenue:     r.revenue,
-    'Cash Flow': r.cashFlow,
-    'Net Income':r.netIncome,
-    Expenditure: r.expenditure,
-    'Profit Margin': +(r.profitMargin * 100).toFixed(1),
-    'Anomaly Count': r.anomalyCount,
-  }));
+  // Trend data – filtered by dateRange from TopBar period selector
+  const trendData = useMemo(() =>
+    FINANCIAL_MONTHLY
+      .filter(r => r.month >= dateRange.start && r.month <= dateRange.end)
+      .map(r => ({
+        month: r.month,
+        Revenue:     r.revenue,
+        'Cash Flow': r.cashFlow,
+        'Net Income':r.netIncome,
+        Expenditure: r.expenditure,
+        'Profit Margin': +(r.profitMargin * 100).toFixed(1),
+        'Anomaly Count': r.anomalyCount,
+      })),
+    [dateRange]
+  );
 
-  // Forecast chart data
-  const forecastData = FINANCIAL_FORECAST.map(r => ({
-    month: r.month,
-    revenue_actual:   r.revenue_actual,
-    cashFlow_actual:  r.cashFlow_actual,
-    revenue_yhat:     r.revenue_yhat,
-    revenue_lower:    r.revenue_lower,
-    revenue_upper:    r.revenue_upper,
-    cashFlow_yhat:    r.cashFlow_yhat,
-    cashFlow_lower:   r.cashFlow_lower,
-    cashFlow_upper:   r.cashFlow_upper,
-    isForecast:       r.isForecast,
-  }));
+  // Forecast chart data – also filtered by period
+  const forecastData = useMemo(() =>
+    FINANCIAL_FORECAST
+      .filter(r => r.month >= dateRange.start && r.month <= dateRange.end)
+      .map(r => ({
+        month: r.month,
+        revenue_actual:   r.revenue_actual,
+        cashFlow_actual:  r.cashFlow_actual,
+        revenue_yhat:     r.revenue_yhat,
+        revenue_lower:    r.revenue_lower,
+        revenue_upper:    r.revenue_upper,
+        cashFlow_yhat:    r.cashFlow_yhat,
+        cashFlow_lower:   r.cashFlow_lower,
+        cashFlow_upper:   r.cashFlow_upper,
+        isForecast:       r.isForecast,
+      })),
+    [dateRange]
+  );
 
   // Filtered anomaly events
   const filteredAnomalies = useMemo(
-    () => sevFilter === 'all'
-      ? FINANCIAL_ANOMALY_EVENTS
-      : FINANCIAL_ANOMALY_EVENTS.filter(e => e.severity === sevFilter),
-    [sevFilter]
+    () => FINANCIAL_ANOMALY_EVENTS
+      .filter(e => {
+        const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+        const inSev = sevFilter === 'all' || e.severity === sevFilter;
+        return inPeriod && inSev;
+      }),
+    [sevFilter, dateRange]
   );
 
   // X-axis tick (show every 4th to prevent overlap)

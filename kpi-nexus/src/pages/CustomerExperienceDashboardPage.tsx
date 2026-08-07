@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useFilterStore } from '../store';
 import {
   AreaChart,
   Area,
@@ -303,6 +304,7 @@ export default function CustomerExperienceDashboardPage() {
   const [forecastKey, setForecastKey] = useState<ForecastKey>('csat');
   const [sevFilter, setSevFilter] = useState<SevFilter>('all');
   const [expandAll, setExpandAll] = useState(false);
+  const { dateRange } = useFilterStore();
 
   // ── KPI card calculations ─────────────────────────────────────────────────
   const { csat, nps, responseTime, supportTickets, churnRate, severityScore } = CX_SUMMARY;
@@ -320,13 +322,25 @@ export default function CustomerExperienceDashboardPage() {
   const svMoM   = delta(severityScore.current, severityScore.prevMonth, true);
   const svYoY   = delta(severityScore.current, severityScore.prevYear, true);
 
+  // ── Period-filtered monthly data ──────────────────────────────────────────
+  const filteredMonthly = useMemo(() =>
+    CX_MONTHLY.filter(r => r.month >= dateRange.start && r.month <= dateRange.end),
+    [dateRange]);
+
   // ── Filtered anomalies ────────────────────────────────────────────────────
   const filteredAnomalies = useMemo(() =>
-    sevFilter === 'all' ? CX_ANOMALY_EVENTS : CX_ANOMALY_EVENTS.filter(e => e.severity === sevFilter),
-    [sevFilter]);
+    CX_ANOMALY_EVENTS.filter(e => {
+      const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+      const inSev = sevFilter === 'all' || e.severity === sevFilter;
+      return inPeriod && inSev;
+    }),
+    [sevFilter, dateRange]);
 
-  // ── Forecast dataset ──────────────────────────────────────────────────────
-  const forecastData = { csat: CSAT_FORECAST, nps: NPS_FORECAST, response: RESPONSE_FORECAST }[forecastKey];
+  // ── Forecast dataset (also filtered by period) ───────────────────────────
+  const forecastData = useMemo(() => {
+    const raw = { csat: CSAT_FORECAST, nps: NPS_FORECAST, response: RESPONSE_FORECAST }[forecastKey];
+    return raw.filter(r => r.month >= dateRange.start && r.month <= dateRange.end);
+  }, [forecastKey, dateRange]);
   const forecastLabel = { csat: 'CSAT Score', nps: 'NPS Score', response: 'Response Time (min)' }[forecastKey];
   const forecastColor = { csat: C.csat, nps: C.nps, response: C.response }[forecastKey];
 
@@ -438,7 +452,7 @@ export default function CustomerExperienceDashboardPage() {
         />
         <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
           <ResponsiveContainer width="100%" height={280}>
-            <ComposedChart data={CX_MONTHLY} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+            <ComposedChart data={filteredMonthly} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
               <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={2} />
               <YAxis yAxisId="csat" domain={[3.6, 4.1]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={40}
@@ -462,7 +476,7 @@ export default function CustomerExperienceDashboardPage() {
           <SectionHeader title="Avg Response Time" subtitle="Minutes — 50 min alert threshold" icon={<Clock size={16} />} />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <AreaChart data={CX_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <AreaChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={3} />
                 <YAxis domain={[30, 75]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={36} />
@@ -479,14 +493,14 @@ export default function CustomerExperienceDashboardPage() {
           <SectionHeader title="Monthly Support Tickets" subtitle="Volume by month — 800+ alert threshold" icon={<Ticket size={16} />} />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={CX_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <BarChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={3} />
                 <YAxis domain={[0, 1100]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={40} />
                 <Tooltip content={<ChartTooltip />} />
                 <ReferenceLine y={800} stroke="#f87171" strokeDasharray="4 3" label={{ value: '800 alert', fill: '#f87171', fontSize: 9, position: 'insideTopRight' }} />
                 <Bar dataKey="supportTickets" name="Support Tickets" radius={[3, 3, 0, 0]}>
-                  {CX_MONTHLY.map((entry, i) => (
+                  {filteredMonthly.map((entry, i) => (
                     <Cell key={i} fill={ticketBarColor(entry.supportTickets)} />
                   ))}
                 </Bar>
@@ -503,7 +517,7 @@ export default function CustomerExperienceDashboardPage() {
           <SectionHeader title="Monthly Churn Rate" subtitle="% — below 3% healthy, 5%+ critical" icon={<UserX size={16} />} />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={CX_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <BarChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={3} />
                 <YAxis domain={[0, 0.10]} tickFormatter={v => `${(v * 100).toFixed(0)}%`} tick={{ fill: '#9ca3af', fontSize: 10 }} width={40} />
@@ -524,7 +538,7 @@ export default function CustomerExperienceDashboardPage() {
                 <ReferenceLine y={0.05} stroke="#f87171" strokeDasharray="4 3" label={{ value: '5% critical', fill: '#f87171', fontSize: 9, position: 'insideTopRight' }} />
                 <ReferenceLine y={0.03} stroke="#f59e0b" strokeDasharray="4 3" label={{ value: '3% warning', fill: '#f59e0b', fontSize: 9, position: 'insideTopLeft' }} />
                 <Bar dataKey="churnRate" name="Churn Rate" radius={[3, 3, 0, 0]}>
-                  {CX_MONTHLY.map((entry, i) => (
+                  {filteredMonthly.map((entry, i) => (
                     <Cell key={i} fill={churnBarColor(entry.churnRate * 100)} />
                   ))}
                 </Bar>
@@ -538,13 +552,13 @@ export default function CustomerExperienceDashboardPage() {
           <SectionHeader title="Monthly Anomaly Activity" subtitle="Anomaly count per month — higher = more instability" icon={<AlertTriangle size={16} />} />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={CX_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <BarChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={3} />
                 <YAxis domain={[0, 14]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={30} />
                 <Tooltip content={<ChartTooltip />} />
                 <Bar dataKey="anomalyCount" name="Anomaly Count" radius={[3, 3, 0, 0]}>
-                  {CX_MONTHLY.map((entry, i) => (
+                  {filteredMonthly.map((entry, i) => (
                     <Cell key={i} fill={anomalyBarColor(entry.anomalyCount)} />
                   ))}
                 </Bar>

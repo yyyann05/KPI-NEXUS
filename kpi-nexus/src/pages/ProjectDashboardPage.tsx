@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useFilterStore } from '../store';
 import {
   AreaChart,
   Area,
@@ -288,6 +289,7 @@ type SevFilter = 'all' | 'critical' | 'warning' | 'low';
 export default function ProjectDashboardPage() {
   const [forecastKey, setForecastKey] = useState<ForecastKey>('completion');
   const [sevFilter, setSevFilter] = useState<SevFilter>('all');
+  const { dateRange } = useFilterStore();
 
   const { completionRate, budgetVariance, delayedTaskRate, budgetSpent, severityScore } = PROJECT_SUMMARY;
 
@@ -303,11 +305,23 @@ export default function ProjectDashboardPage() {
   const svMoM = pctDelta(severityScore.current, severityScore.prevMonth);
   const svYoY = pctDelta(severityScore.current, severityScore.prevYear);
 
-  const filteredAnomalies = useMemo(() =>
-    sevFilter === 'all' ? PROJECT_ANOMALY_EVENTS : PROJECT_ANOMALY_EVENTS.filter(e => e.severity === sevFilter),
-    [sevFilter]);
+  // Period-filtered monthly data
+  const filteredMonthly = useMemo(() =>
+    PROJECT_MONTHLY.filter(r => r.month >= dateRange.start && r.month <= dateRange.end),
+    [dateRange]);
 
-  const forecastData = forecastKey === 'completion' ? COMPLETION_FORECAST : BUDGET_VARIANCE_FORECAST;
+  const filteredAnomalies = useMemo(() =>
+    PROJECT_ANOMALY_EVENTS.filter(e => {
+      const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+      const inSev = sevFilter === 'all' || e.severity === sevFilter;
+      return inPeriod && inSev;
+    }),
+    [sevFilter, dateRange]);
+
+  const forecastData = useMemo(() => {
+    const raw = forecastKey === 'completion' ? COMPLETION_FORECAST : BUDGET_VARIANCE_FORECAST;
+    return raw.filter(r => r.month >= dateRange.start && r.month <= dateRange.end);
+  }, [forecastKey, dateRange]);
   const forecastColor = forecastKey === 'completion' ? C.completion : C.budget;
   const forecastLabel = forecastKey === 'completion' ? 'Completion Rate (%)' : 'Budget Variance (%)';
 
@@ -415,7 +429,7 @@ export default function ProjectDashboardPage() {
         />
         <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
           <ResponsiveContainer width="100%" height={260}>
-            <AreaChart data={PROJECT_MONTHLY} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+            <AreaChart data={filteredMonthly} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
               <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={2} />
               <YAxis domain={[-5, 110]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={38} tickFormatter={v => `${v}%`} />
@@ -442,7 +456,7 @@ export default function ProjectDashboardPage() {
           />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={PROJECT_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <BarChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={2} />
                 <YAxis tick={{ fill: '#9ca3af', fontSize: 10 }} width={45} tickFormatter={v => `${v}%`} />
@@ -462,7 +476,7 @@ export default function ProjectDashboardPage() {
                   label={{ value: '5% threshold', fill: '#f59e0b', fontSize: 9, position: 'insideTopRight' }} />
                 <ReferenceLine y={0} stroke="#6b7280" />
                 <Bar dataKey="budgetVariancePct" name="Budget Variance %" radius={[3, 3, 0, 0]}>
-                  {PROJECT_MONTHLY.map((entry, i) => (
+                  {filteredMonthly.map((entry, i) => (
                     <Cell key={i} fill={budgetBarColor(entry.budgetVariancePct)} />
                   ))}
                 </Bar>
@@ -480,7 +494,7 @@ export default function ProjectDashboardPage() {
           />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={PROJECT_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <BarChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={2} />
                 <YAxis tick={{ fill: '#9ca3af', fontSize: 10 }} width={52} tickFormatter={v => fmtBudget(v)} />
@@ -513,7 +527,7 @@ export default function ProjectDashboardPage() {
           />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <AreaChart data={PROJECT_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <AreaChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={2} />
                 <YAxis domain={[0, 1.1]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={40}
@@ -547,7 +561,7 @@ export default function ProjectDashboardPage() {
           />
           <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
             <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={PROJECT_MONTHLY} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
+              <BarChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
                 <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={2} />
                 <YAxis domain={[0, 105]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={36} />
@@ -557,7 +571,7 @@ export default function ProjectDashboardPage() {
                 <ReferenceLine y={80} stroke="#f87171" strokeDasharray="4 3"
                   label={{ value: 'Critical: 80', fill: '#f87171', fontSize: 9, position: 'insideTopLeft' }} />
                 <Bar dataKey="severityScore" name="Severity Score" radius={[3, 3, 0, 0]}>
-                  {PROJECT_MONTHLY.map((entry, i) => (
+                  {filteredMonthly.map((entry, i) => (
                     <Cell key={i} fill={severityBarColor(entry.severityScore)} />
                   ))}
                 </Bar>
@@ -576,13 +590,13 @@ export default function ProjectDashboardPage() {
         />
         <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
           <ResponsiveContainer width="100%" height={200}>
-            <BarChart data={PROJECT_MONTHLY} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+            <BarChart data={filteredMonthly} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
               <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={2} />
               <YAxis domain={[0, 6]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={28} />
               <Tooltip content={<ChartTooltip />} />
               <Bar dataKey="anomalyCount" name="Anomaly Count" radius={[3, 3, 0, 0]}>
-                {PROJECT_MONTHLY.map((entry, i) => (
+                {filteredMonthly.map((entry, i) => (
                   <Cell key={i} fill={anomalyBarColor(entry.anomalyCount)} />
                 ))}
               </Bar>

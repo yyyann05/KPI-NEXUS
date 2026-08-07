@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useFilterStore } from '../store';
 import {
   AreaChart,
   Area,
@@ -242,25 +243,35 @@ export default function WorkforceDashboardPage() {
   const [expandedAnomaly, setExpandedAnomaly] = useState<number | null>(null);
   const [sevFilter, setSevFilter] = useState<'all' | 'critical' | 'warning' | 'low'>('all');
   const [forecastMetric, setForecastMetric] = useState<'attendance' | 'productivity' | 'engagement'>('attendance');
+  const { dateRange } = useFilterStore();
 
   const S = WORKFORCE_SUMMARY;
 
-  // Recharts-friendly trend rows
-  const trend = WORKFORCE_MONTHLY.map(r => ({
-    month: r.month,
-    Attendance:    +r.attendance.toFixed(2),
-    Productivity:  +r.productivity.toFixed(2),
-    Engagement:    +r.engagement.toFixed(2),
-    'Training Hrs':+r.trainingHours.toFixed(2),
-    'Overtime Hrs':+r.overtimeHours.toFixed(2),
-    'Turnover %':  +(r.turnoverRate * 100).toFixed(2),
-    'Anomaly Count':r.anomalyCount,
-    Severity:      +r.avgSeverityScore.toFixed(1),
-  }));
+  // Recharts-friendly trend rows — filtered by period selector
+  const trend = useMemo(() =>
+    WORKFORCE_MONTHLY
+      .filter(r => r.month >= dateRange.start && r.month <= dateRange.end)
+      .map(r => ({
+        month: r.month,
+        Attendance:    +r.attendance.toFixed(2),
+        Productivity:  +r.productivity.toFixed(2),
+        Engagement:    +r.engagement.toFixed(2),
+        'Training Hrs':+r.trainingHours.toFixed(2),
+        'Overtime Hrs':+r.overtimeHours.toFixed(2),
+        'Turnover %':  +(r.turnoverRate * 100).toFixed(2),
+        'Anomaly Count':r.anomalyCount,
+        Severity:      +r.avgSeverityScore.toFixed(1),
+      })),
+    [dateRange]
+  );
 
   const filteredAnomalies = useMemo(
-    () => sevFilter === 'all' ? WORKFORCE_ANOMALY_EVENTS : WORKFORCE_ANOMALY_EVENTS.filter(e => e.severity === sevFilter),
-    [sevFilter],
+    () => WORKFORCE_ANOMALY_EVENTS.filter(e => {
+      const inPeriod = e.month >= dateRange.start && e.month <= dateRange.end;
+      const inSev = sevFilter === 'all' || e.severity === sevFilter;
+      return inPeriod && inSev;
+    }),
+    [sevFilter, dateRange],
   );
 
   const fmKey = forecastMetric;
@@ -484,7 +495,7 @@ export default function WorkforceDashboardPage() {
           <span className="flex items-center gap-1.5"><span className="inline-block w-3 h-3 rounded-sm bg-indigo-500/20 border border-indigo-500/30" />95% CI Band</span>
         </div>
         <ResponsiveContainer width="100%" height={260}>
-          <ComposedChart data={WORKFORCE_FORECAST} margin={{ top:4, right:16, left:0, bottom:0 }}>
+          <ComposedChart data={WORKFORCE_FORECAST.filter(r => r.month >= dateRange.start && r.month <= dateRange.end)} margin={{ top:4, right:16, left:0, bottom:0 }}>
             <defs>
               <linearGradient id="gradBandWF" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%"  stopColor={C.forecast} stopOpacity={0.20} />
