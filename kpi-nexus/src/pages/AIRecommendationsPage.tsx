@@ -475,7 +475,7 @@ const AIRecommendationsPage: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [exportOpen, setExportOpen] = useState(false);
   const [showToast, setShowToast] = useState(false);
-  const [activeSection, setActiveSection] = useState<'cards' | 'domain' | 'timeline' | 'table'>('cards');
+  const [activeSection, setActiveSection] = useState<'domain' | 'table'>('domain');
   const [expandedDomains, setExpandedDomains] = useState<Set<string>>(new Set(['Financial','Workforce','Customer Experience','Project']));
 
   const setStatus = (id: string, status: RecStatus) =>
@@ -745,9 +745,7 @@ const AIRecommendationsPage: React.FC = () => {
       {/* ── Section Nav ── */}
       <div className="flex gap-1 flex-wrap mb-5 bg-white/5 rounded-xl p-1 border border-white/10">
         {([
-          { id: 'cards',    label: 'Priority Cards',       icon: <Target className="w-3.5 h-3.5" /> },
           { id: 'domain',   label: 'By Domain',            icon: <Briefcase className="w-3.5 h-3.5" /> },
-          { id: 'timeline', label: 'Action Timeline',      icon: <Calendar className="w-3.5 h-3.5" /> },
           { id: 'table',    label: 'Details Table',        icon: <Eye className="w-3.5 h-3.5" /> },
         ] as const).map(s => (
           <button
@@ -766,21 +764,6 @@ const AIRecommendationsPage: React.FC = () => {
           </span>
         )}
       </div>
-
-      {/* ── SECTION: Priority Cards ── */}
-      {activeSection === 'cards' && (
-        <div className="space-y-4">
-          {filtered.length === 0 ? (
-            <div className="text-center py-16 text-slate-500">
-              <Filter className="w-8 h-8 mx-auto mb-3 opacity-40" />
-              <p>No recommendations match your filters.</p>
-              <button onClick={clearFilters} className="mt-3 text-indigo-400 hover:text-indigo-300 text-sm">Clear filters</button>
-            </div>
-          ) : (
-            filtered.map(r => <RecCard key={r.id} rec={r} onStatusChange={setStatus} />)
-          )}
-        </div>
-      )}
 
       {/* ── SECTION: By Domain ── */}
       {activeSection === 'domain' && (
@@ -819,66 +802,6 @@ const AIRecommendationsPage: React.FC = () => {
                 {isOpen && (
                   <div className="border-t border-white/10 p-4 space-y-3">
                     {domainRecs.map(r => <RecCard key={r.id} rec={r} onStatusChange={setStatus} />)}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      )}
-
-      {/* ── SECTION: Action Timeline ── */}
-      {activeSection === 'timeline' && (
-        <div className="space-y-6">
-          {([
-            { timing: 'immediate'  as ActionTiming, label: 'Immediate Action — Today',    icon: <Zap className="w-4 h-4 text-red-400" />, borderColor: '#ef4444', bg: 'bg-red-950/20 border-red-500/20' },
-            { timing: 'short-term' as ActionTiming, label: 'Short-term — This Week',      icon: <CalendarDays className="w-4 h-4 text-amber-400" />, borderColor: '#f97316', bg: 'bg-amber-950/20 border-amber-500/20' },
-            { timing: 'long-term'  as ActionTiming, label: 'Long-term — This Month',      icon: <CalendarCheck className="w-4 h-4 text-cyan-400" />, borderColor: '#22d3ee', bg: 'bg-cyan-950/20 border-cyan-500/20' },
-          ]).map(({ timing, label, icon, bg }) => {
-            const group = filtered.filter(r => r.actionTiming === timing);
-            return (
-              <div key={timing} className={`rounded-xl border p-5 ${bg}`}>
-                <div className="flex items-center gap-2 mb-4">
-                  {icon}
-                  <h3 className="font-semibold text-white">{label}</h3>
-                  <span className="text-xs text-slate-400 bg-white/10 px-2 py-0.5 rounded-full ml-1">
-                    {group.length} action{group.length !== 1 ? 's' : ''}
-                  </span>
-                </div>
-                {group.length === 0 ? (
-                  <p className="text-sm text-slate-500">No recommendations in this timeframe match your filters.</p>
-                ) : (
-                  <div className="space-y-3">
-                    {group.map(r => (
-                      <div key={r.id} className="bg-white/5 rounded-xl border border-white/10 p-4 hover:border-white/20 transition-all">
-                        <div className="flex flex-wrap gap-2 items-center mb-2">
-                          {priorityBadge(r.priority)}
-                          {domainBadge(r.driverDomain)}
-                          <ArrowRight className="w-3 h-3 text-slate-500 shrink-0" />
-                          {domainBadge(r.targetDomain)}
-                          <span className="text-xs font-mono text-slate-500 ml-1">{r.driverKpi} → {r.targetKpi}</span>
-                        </div>
-                        <p className="text-sm text-slate-300 mb-2">{r.plainEnglishSummary}</p>
-                        <div className="bg-indigo-950/40 border border-indigo-500/20 rounded-lg p-3 mb-2">
-                          <p className="text-xs font-semibold text-indigo-300 mb-1">Action</p>
-                          <p className="text-sm text-slate-300">{r.recommendedAction}</p>
-                        </div>
-                        <div className="flex flex-wrap gap-2 items-center">
-                          {corrBadge(r.correlation)}
-                          <span className="text-xs text-slate-500">Confidence: {r.confidenceScore}%</span>
-                          {statusBadge(r.status)}
-                          <select
-                            value={r.status}
-                            onChange={e => setStatus(r.id, e.target.value as RecStatus)}
-                            className="ml-auto px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-300 focus:outline-none focus:border-indigo-500"
-                          >
-                            <option value="Pending">Pending</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Completed">Completed</option>
-                          </select>
-                        </div>
-                      </div>
-                    ))}
                   </div>
                 )}
               </div>

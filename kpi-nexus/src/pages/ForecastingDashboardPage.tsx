@@ -656,18 +656,6 @@ export default function ForecastingDashboardPage() {
         </div>
       </div>
 
-      {/* ── AI Recommendations ───────────────────────────────────────────────── */}
-      <div>
-        <div className="flex items-center gap-2 mb-4">
-          <Zap className="w-4 h-4 text-yellow-400" />
-          <h2 className="text-sm font-bold uppercase tracking-widest text-slate-400">
-            AI Forecast Recommendations
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-          {AI_RECS.map((r, i) => <RecommendationCard key={i} rec={r} />)}
-        </div>
-      </div>
     </div>
   );
 }

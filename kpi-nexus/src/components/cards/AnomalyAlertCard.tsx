@@ -51,13 +51,26 @@ export function AnomalyAlertCard({ alert, compact }: AnomalyAlertCardProps) {
         </div>
 
         {!compact && (
-          <div className="flex items-center gap-3 mt-1">
-            <span className="text-[11px] text-text-muted">
-              Actual: <span className="text-text-secondary font-medium">{alert.actualValue.toFixed(2)}</span>
-            </span>
-            <span className="text-[11px] text-text-muted">
-              Expected: <span className="text-text-secondary font-medium">{alert.expectedValue.toFixed(2)}</span>
-            </span>
+          <div className="flex flex-col gap-0.5 mt-1">
+            <div className="flex items-center gap-3">
+              <span className="text-[11px] text-text-muted">
+                Actual: <span className="text-text-secondary font-medium">{alert.actualValue.toFixed(2)}</span>
+              </span>
+              <span className="text-[11px] text-text-muted">
+                Expected: <span className="text-text-secondary font-medium">{alert.expectedValue.toFixed(2)}</span>
+              </span>
+            </div>
+            {alert.projectedValue !== undefined && alert.projectedPctChange !== undefined && (
+              <span className="text-[11px] text-text-muted">
+                Projected: <span className="text-text-secondary font-medium">{alert.projectedValue.toLocaleString()}</span>
+                <span className={cn('ml-1 font-semibold', alert.projectedPctChange >= 0 ? 'text-green-400' : 'text-red-400')}>
+                  ({alert.projectedPctChange > 0 ? '+' : ''}{alert.projectedPctChange.toFixed(1)}%)
+                </span>
+              </span>
+            )}
+            {alert.escalationTier && alert.escalationTier !== 'Low' && (
+              <span className="text-[11px] text-amber-400 font-medium">↑ Escalated to {alert.escalationNotify}</span>
+            )}
           </div>
         )}
 

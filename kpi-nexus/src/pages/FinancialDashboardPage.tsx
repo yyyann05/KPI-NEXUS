@@ -630,35 +630,6 @@ export default function FinancialDashboardPage() {
         </ResponsiveContainer>
       </Section>
 
-      {/* ── Anomaly Timeline Mini ──────────────────────────────────── */}
-      <Section
-        title="Monthly Anomaly Activity"
-        subtitle="Financial domain anomaly count per month"
-        icon={<AlertTriangle size={15} />}
-      >
-        <ResponsiveContainer width="100%" height={160}>
-          <BarChart data={trendData} margin={{ top: 4, right: 16, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-            <XAxis dataKey="month" tick={{ fill: '#6b7280', fontSize: 10 }} tickFormatter={tickFormatter} axisLine={false} tickLine={false} />
-            <YAxis tick={{ fill: '#6b7280', fontSize: 10 }} axisLine={false} tickLine={false} width={24} allowDecimals={false} />
-            <Tooltip content={<ChartTooltip />} />
-            <Bar dataKey="Anomaly Count" radius={[3,3,0,0]} maxBarSize={20}>
-              {trendData.map((entry, i) => (
-                <Cell
-                  key={i}
-                  fill={entry['Anomaly Count'] >= 3 ? '#ef4444' : entry['Anomaly Count'] >= 2 ? '#f59e0b' : '#6366f1'}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-        <div className="flex items-center gap-6 mt-3 text-xs text-text-muted">
-          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-red-500 inline-block" /> 3+ flags</span>
-          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-amber-500 inline-block" /> 2 flags</span>
-          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-indigo-500 inline-block" /> 1 flag</span>
-        </div>
-      </Section>
-
       {/* ── Anomaly Table ─────────────────────────────────────────── */}
       <Section
         title="Financial Anomaly Events"

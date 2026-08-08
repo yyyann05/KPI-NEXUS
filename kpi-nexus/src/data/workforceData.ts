@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // Workforce domain data — sourced from unified_kpi_dataset_with_anomalies.csv
-// Jan 2024 – Dec 2025  (24 months)
+// Jan 2024 – Sep 2027  (45 months)
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface WorkforceMonthRow {
@@ -44,6 +44,29 @@ export const WORKFORCE_MONTHLY: WorkforceMonthRow[] = [
   { date:'2025-10-01', month:'Oct 25', attendance:90.603, productivity:73.963, engagement:66.950, trainingHours:4.017, overtimeHours:13.541, turnoverRate:0.009, anomalyCount:8,  anomalyRate:0.070, avgSeverityScore:57.243 },
   { date:'2025-11-01', month:'Nov 25', attendance:92.449, productivity:73.335, engagement:66.147, trainingHours:4.333, overtimeHours:14.675, turnoverRate:0.018, anomalyCount:6,  anomalyRate:0.053, avgSeverityScore:60.434 },
   { date:'2025-12-01', month:'Dec 25', attendance:85.824, productivity:74.275, engagement:67.963, trainingHours:4.152, overtimeHours:14.540, turnoverRate:0.027, anomalyCount:6,  anomalyRate:0.054, avgSeverityScore:66.034 },
+  // ── 2026 ──────────────────────────────────────────────────────────────
+  { date:'2026-01-01', month:'Jan 26', attendance:85.061, productivity:74.867, engagement:68.979, trainingHours:5.008, overtimeHours:6.190,  turnoverRate:0.015, anomalyCount:5,  anomalyRate:0.038, avgSeverityScore:54.005 },
+  { date:'2026-02-01', month:'Feb 26', attendance:91.065, productivity:74.444, engagement:67.714, trainingHours:4.146, overtimeHours:6.124,  turnoverRate:0.015, anomalyCount:5,  anomalyRate:0.038, avgSeverityScore:44.263 },
+  { date:'2026-03-01', month:'Mar 26', attendance:91.801, productivity:75.345, engagement:67.912, trainingHours:3.734, overtimeHours:6.372,  turnoverRate:0.016, anomalyCount:3,  anomalyRate:0.023, avgSeverityScore:44.843 },
+  { date:'2026-04-01', month:'Apr 26', attendance:90.780, productivity:73.971, engagement:66.867, trainingHours:4.040, overtimeHours:6.996,  turnoverRate:0.000, anomalyCount:9,  anomalyRate:0.071, avgSeverityScore:50.775 },
+  { date:'2026-05-01', month:'May 26', attendance:92.051, productivity:73.882, engagement:67.778, trainingHours:3.698, overtimeHours:6.190,  turnoverRate:0.008, anomalyCount:3,  anomalyRate:0.024, avgSeverityScore:42.780 },
+  { date:'2026-06-01', month:'Jun 26', attendance:91.974, productivity:73.882, engagement:68.923, trainingHours:4.992, overtimeHours:6.542,  turnoverRate:0.032, anomalyCount:4,  anomalyRate:0.032, avgSeverityScore:44.346 },
+  { date:'2026-07-01', month:'Jul 26', attendance:91.661, productivity:70.534, engagement:67.600, trainingHours:3.777, overtimeHours:6.527,  turnoverRate:0.000, anomalyCount:6,  anomalyRate:0.050, avgSeverityScore:50.090 },
+  { date:'2026-08-01', month:'Aug 26', attendance:91.317, productivity:69.068, engagement:66.972, trainingHours:4.223, overtimeHours:6.137,  turnoverRate:0.033, anomalyCount:6,  anomalyRate:0.050, avgSeverityScore:49.131 },
+  { date:'2026-09-01', month:'Sep 26', attendance:92.188, productivity:74.287, engagement:66.238, trainingHours:3.752, overtimeHours:6.577,  turnoverRate:0.034, anomalyCount:4,  anomalyRate:0.034, avgSeverityScore:48.874 },
+  { date:'2026-10-01', month:'Oct 26', attendance:92.334, productivity:74.282, engagement:67.658, trainingHours:4.425, overtimeHours:13.765, turnoverRate:0.018, anomalyCount:5,  anomalyRate:0.044, avgSeverityScore:62.063 },
+  { date:'2026-11-01', month:'Nov 26', attendance:90.694, productivity:73.735, engagement:68.197, trainingHours:3.793, overtimeHours:14.218, turnoverRate:0.000, anomalyCount:6,  anomalyRate:0.054, avgSeverityScore:63.660 },
+  { date:'2026-12-01', month:'Dec 26', attendance:85.807, productivity:74.076, engagement:68.167, trainingHours:4.234, overtimeHours:13.541, turnoverRate:0.009, anomalyCount:2,  anomalyRate:0.018, avgSeverityScore:67.743 },
+  // ── 2027 ──────────────────────────────────────────────────────────────
+  { date:'2027-01-01', month:'Jan 27', attendance:86.417, productivity:73.858, engagement:68.306, trainingHours:4.845, overtimeHours:5.586,  turnoverRate:0.009, anomalyCount:0,  anomalyRate:0.000, avgSeverityScore:53.483 },
+  { date:'2027-02-01', month:'Feb 27', attendance:92.148, productivity:72.876, engagement:67.420, trainingHours:4.183, overtimeHours:6.812,  turnoverRate:0.000, anomalyCount:2,  anomalyRate:0.018, avgSeverityScore:45.850 },
+  { date:'2027-03-01', month:'Mar 27', attendance:92.242, productivity:73.715, engagement:67.131, trainingHours:3.899, overtimeHours:6.739,  turnoverRate:0.037, anomalyCount:4,  anomalyRate:0.037, avgSeverityScore:45.707 },
+  { date:'2027-04-01', month:'Apr 27', attendance:90.835, productivity:74.941, engagement:67.449, trainingHours:3.952, overtimeHours:4.782,  turnoverRate:0.000, anomalyCount:5,  anomalyRate:0.048, avgSeverityScore:43.773 },
+  { date:'2027-05-01', month:'May 27', attendance:91.855, productivity:74.401, engagement:67.762, trainingHours:3.752, overtimeHours:6.130,  turnoverRate:0.010, anomalyCount:1,  anomalyRate:0.010, avgSeverityScore:45.867 },
+  { date:'2027-06-01', month:'Jun 27', attendance:91.404, productivity:74.225, engagement:68.771, trainingHours:4.962, overtimeHours:5.921,  turnoverRate:0.019, anomalyCount:4,  anomalyRate:0.038, avgSeverityScore:47.715 },
+  { date:'2027-07-01', month:'Jul 27', attendance:90.911, productivity:71.773, engagement:68.919, trainingHours:4.137, overtimeHours:5.297,  turnoverRate:0.010, anomalyCount:3,  anomalyRate:0.029, avgSeverityScore:40.909 },
+  { date:'2027-08-01', month:'Aug 27', attendance:89.705, productivity:69.765, engagement:68.437, trainingHours:4.129, overtimeHours:6.026,  turnoverRate:0.010, anomalyCount:6,  anomalyRate:0.059, avgSeverityScore:47.850 },
+  { date:'2027-09-01', month:'Sep 27', attendance:91.082, productivity:74.453, engagement:67.937, trainingHours:4.170, overtimeHours:6.709,  turnoverRate:0.030, anomalyCount:6,  anomalyRate:0.060, avgSeverityScore:47.015 },
 ];
 
 // ── Prophet-style 6-month forecast ───────────────────────────────────────────
@@ -212,11 +235,11 @@ export const WORKFORCE_ANOMALY_EVENTS: WorkforceAnomalyEvent[] = [
   },
 ];
 
-// ── Summary KPI stats (based on latest month = Dec 2025) ─────────────────────
+// ── Summary KPI stats (based on latest month = Sep 2027) ─────────────────────
 
-const last = WORKFORCE_MONTHLY[WORKFORCE_MONTHLY.length - 1];   // Dec 2025
-const prev = WORKFORCE_MONTHLY[WORKFORCE_MONTHLY.length - 2];   // Nov 2025
-const yearAgo = WORKFORCE_MONTHLY[WORKFORCE_MONTHLY.length - 13]; // Dec 2024
+const last = WORKFORCE_MONTHLY[WORKFORCE_MONTHLY.length - 1];   // Sep 2027
+const prev = WORKFORCE_MONTHLY[WORKFORCE_MONTHLY.length - 2];   // Aug 2027
+const yearAgo = WORKFORCE_MONTHLY[WORKFORCE_MONTHLY.length - 13]; // Sep 2026
 
 function pct(current: number, baseline: number) {
   return +((current - baseline) / baseline * 100).toFixed(1);

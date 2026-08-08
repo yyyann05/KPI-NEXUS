@@ -50,8 +50,10 @@ export function getDeltaArrow(delta: number): string {
   return delta > 0 ? '↑' : '↓';
 }
 
+// Severity scores in the real dataset range from ~17 to ~97 (0–100 scale)
+// Critical ≥ 40 (High/Critical escalation tier), Warning ≥ 20, Info < 20
 export function getSeverityLabel(severity: number): 'critical' | 'warning' | 'info' {
-  if (severity >= 5) return 'critical';
-  if (severity >= 2) return 'warning';
+  if (severity >= 40) return 'critical';
+  if (severity >= 20) return 'warning';
   return 'info';
 }

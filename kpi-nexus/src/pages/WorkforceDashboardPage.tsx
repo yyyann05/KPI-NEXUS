@@ -446,32 +446,6 @@ export default function WorkforceDashboardPage() {
         </ResponsiveContainer>
       </Section>
 
-      {/* ── Anomaly Count ─────────────────────────────────────────────── */}
-      <Section
-        title="Monthly Anomaly Activity"
-        subtitle="Workforce domain anomaly count per month"
-        icon={<AlertTriangle size={15} />}
-      >
-        <ResponsiveContainer width="100%" height={160}>
-          <BarChart data={trend} margin={{ top:4, right:16, left:0, bottom:0 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
-            <XAxis dataKey="month" tick={{ fill:'#6b7280', fontSize:10 }} tickFormatter={skipTick} axisLine={false} tickLine={false} />
-            <YAxis tick={{ fill:'#6b7280', fontSize:10 }} axisLine={false} tickLine={false} width={24} allowDecimals={false} />
-            <Tooltip content={<ChartTooltip />} />
-            <Bar dataKey="Anomaly Count" maxBarSize={18} radius={[3,3,0,0]}>
-              {trend.map((e, i) => (
-                <Cell key={i} fill={e['Anomaly Count'] >= 7 ? '#ef4444' : e['Anomaly Count'] >= 5 ? '#f59e0b' : '#6366f1'} />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-        <div className="flex items-center gap-6 mt-3 text-xs text-text-muted">
-          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-red-500 inline-block" />7+ events</span>
-          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-amber-500 inline-block" />5–6 events</span>
-          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-sm bg-indigo-500 inline-block" />1–4 events</span>
-        </div>
-      </Section>
-
       {/* ── Prophet Forecast ──────────────────────────────────────────── */}
       <Section
         title="Prophet Forecast — 6-Month Outlook"

@@ -39,6 +39,17 @@ export interface AlertItem {
   severityScore: number;
   actualValue: number;
   expectedValue: number;
+  // Extended fields from dashboard_alerts.csv
+  escalationTier?: 'Critical' | 'High' | 'Medium' | 'Low';
+  escalationNotify?: string;
+  triggerReason?: string;
+  supportingData?: string;
+  businessImpact?: string;
+  recommendedAction?: string;
+  projectedValue?: number;
+  projectedPctChange?: number;
+  projectedDate?: string;
+  alertStatus?: 'success' | 'failed';
 }
 
 export interface RecommendationItem {

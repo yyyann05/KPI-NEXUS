@@ -564,33 +564,6 @@ export default function CustomerExperienceDashboardPage() {
           </div>
         </div>
 
-        {/* Anomaly Activity */}
-        <div>
-          <SectionHeader title="Monthly Anomaly Activity" subtitle="Anomaly count per month — higher = more instability" icon={<AlertTriangle size={16} />} />
-          <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5">
-            <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={filteredMonthly} margin={{ top: 5, right: 16, left: 0, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.5} />
-                <XAxis dataKey="month" tick={{ fill: '#9ca3af', fontSize: 10 }} tickFormatter={shortMonth} interval={3} />
-                <YAxis domain={[0, 14]} tick={{ fill: '#9ca3af', fontSize: 10 }} width={30} />
-                <Tooltip content={<ChartTooltip />} />
-                <Bar dataKey="anomalyCount" name="Anomaly Count" radius={[3, 3, 0, 0]}>
-                  {filteredMonthly.map((entry, i) => (
-                    <Cell key={i} fill={anomalyBarColor(entry.anomalyCount)} />
-                  ))}
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer>
-            <div className="flex items-center gap-4 mt-3 justify-end">
-              {[['0', '#374151'], ['1-4', '#6366f1'], ['5-7', '#f59e0b'], ['8+', '#f87171']].map(([lbl, col]) => (
-                <span key={lbl} className="flex items-center gap-1 text-xs text-gray-400">
-                  <span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: col }} />
-                  {lbl}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* ── Prophet Forecast ────────────────────────────────────────────── */}

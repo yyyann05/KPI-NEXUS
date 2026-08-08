@@ -270,49 +270,6 @@ const AnomalyDetectionPage: React.FC = () => {
         />
       </div>
 
-      {/* ── Timeline chart ────────────────────────────────────── */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-        <div className="mb-5">
-          <h2 className="text-lg font-semibold">Anomaly Timeline</h2>
-          <p className="text-gray-500 text-xs mt-0.5">Monthly anomaly counts by business domain</p>
-        </div>
-        <ResponsiveContainer width="100%" height={280}>
-          <ComposedChart data={ANOMALY_TIMELINE.filter(r => { const iso = monthToISO(r.month); return iso >= dateRange.start && iso <= dateRange.end; })} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="#1f2937" />
-            <XAxis
-              dataKey="month"
-              tick={{ fill: '#6b7280', fontSize: 11 }}
-              tickLine={false}
-              axisLine={{ stroke: '#374151' }}
-              interval={3}
-            />
-            <YAxis
-              tick={{ fill: '#6b7280', fontSize: 11 }}
-              tickLine={false}
-              axisLine={false}
-              allowDecimals={false}
-            />
-            <Tooltip content={<TimelineTooltip />} />
-            <Legend
-              wrapperStyle={{ fontSize: 12, paddingTop: 16 }}
-              formatter={(v) => <span style={{ color: '#9ca3af' }}>{v}</span>}
-            />
-            <Bar dataKey="financial" name="Financial"              stackId="a" fill={DOMAIN_COLORS.Financial}              radius={[0,0,0,0]} />
-            <Bar dataKey="workforce" name="Workforce"              stackId="a" fill={DOMAIN_COLORS.Workforce}              radius={[0,0,0,0]} />
-            <Bar dataKey="customer"  name="Customer Experience"    stackId="a" fill={DOMAIN_COLORS['Customer Experience']} radius={[0,0,0,0]} />
-            <Bar dataKey="project"   name="Project"                stackId="a" fill={DOMAIN_COLORS.Project}               radius={[4,4,0,0]} />
-            <Line
-              dataKey="total"
-              name="total"
-              stroke="#f9fafb"
-              strokeWidth={1.5}
-              dot={false}
-              strokeDasharray="4 2"
-            />
-          </ComposedChart>
-        </ResponsiveContainer>
-      </div>
-
       {/* ── Severity distribution ─────────────────────────────── */}
       <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
         <div className="mb-5">

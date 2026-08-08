@@ -39,7 +39,8 @@ function formatFullDate(d: Date): string {
 export function OverviewPage() {
   const navigate = useNavigate();
   const [now, setNow] = useState(() => new Date());
-  const criticalAlerts = RECENT_ALERTS.filter((a) => a.severityScore >= 5);
+  // Alerts with severity ≥ 40 = High/Critical escalation tier
+  const criticalAlerts = RECENT_ALERTS.filter((a) => a.severityScore >= 40);
   const pendingRecs = RECENT_RECOMMENDATIONS.filter((r) => r.status === 'pending');
 
   // Update every minute so greeting and date stay current
@@ -98,7 +99,7 @@ export function OverviewPage() {
             {/* KPI Trend Chart */}
             <Card
               title="Cross-Domain KPI Trends"
-              subtitle="Normalized 0–100 index per domain · Jan 2025 – Jul 2026"
+              subtitle="Normalized 0–100 index per domain · Jan 2024 – Sep 2027"
               accentColor="#4F8EF7"
               actions={
                 <Button
