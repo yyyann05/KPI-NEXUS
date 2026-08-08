@@ -8,6 +8,12 @@ KPI Nexus is an AI-powered Executive KPI Intelligence platform designed to help 
 
 ---
 
+## 🏗️ Architecture
+
+**Detailed Architecture:** Refer to [`ARCHITECTURE.md`](./ARCHITECTURE.md) in the `kpi-nexus` folder.
+
+---
+
 ## 📌 Project Overview
 
 Organizations often monitor KPIs across different business areas such as Finance, Workforce, Customer Experience and Projects. However, analyzing these KPIs separately can make it difficult for executives to identify important trends, risks and relationships.
